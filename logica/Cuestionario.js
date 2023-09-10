@@ -1,4 +1,16 @@
 export const cuestionario = {
+    pEdad: {
+        texto: '¿Cuál es su edad?',
+        tipo: 'edad',
+    },
+    pSexo: {
+        texto: '¿Cuál es su sexo?',
+        tipo: 'sexo',
+        opciones: {
+            1: 'Masculino',
+            2: 'Femenino'
+        }
+    },
     p1:{
         texto: '¿Tenía ud. Conocimiento sobre lo que es la Ciber Seguridad o toma recién conocimiento de lo que es la Ciber Seguridad?',
         tipo: 'unico',
@@ -17,7 +29,7 @@ export const cuestionario = {
         }
     },
     p3:{
-        texto: 'Ahora le voy a pedir que evalue que tan importante es para ud. La ciber seguridad y le voy a pedir que lo haga como en el colegio donde 1 nada importante y 10 totalmente importante. Que puntaje le asigna ud?',
+        texto: 'Ahora le voy a pedir que evalue que tan importante es para ud. La ciber seguridad y le voy a pedir que lo haga como en el colegio donde 1 es nada importante y 10 totalmente importante. ¿Que puntaje le asigna ud?',
         tipo: 'escala',
         opciones: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
     },
@@ -55,7 +67,7 @@ export const cuestionario = {
         }]
     },
     p7:{
-        texto: 'Además del uso de contraseñas, Que otros métodos utiliza para acceder a distintas aplicaciones en el uso cotidiano de dispositivos electrónicos?',
+        texto: 'Además del uso de contraseñas, ¿Que otros métodos utiliza para acceder a distintas aplicaciones en el uso cotidiano de dispositivos electrónicos?',
         tipo: 'multiple',
         opciones: [{
             texto: {
@@ -79,13 +91,13 @@ export const cuestionario = {
         texto: 'Respecto a Tu dispositivo Celular me podrías decir según el tipo de abono si es….',
         tipo: 'unico',
         opciones: {
-            1: 'PREPAGO',
-            2:'PAGO CON ABONO',
-            3: 'SOLO LO USO CON WIFI'
+            1: 'Prepago',
+            2:'Pago con abono',
+            3: 'Solo lo uso con wifi'
         }
     },
     p10:{
-        texto: 'En cuanto al uso del celular me gustaría que me dijera con que frecuencia ud. está pendiente del Celular o cada cuanto lo mira para ver si tiene notificaciones o para usar redes sociales y/o aplicaciones?',
+        texto: 'En cuanto al uso del celular me gustaría que me dijera ¿con que frecuencia ud. está pendiente del Celular o cada cuanto lo mira para ver si tiene notificaciones o para usar redes sociales y/o aplicaciones?',
         tipo: 'unico',
         opciones: {
             1: 'Estoy pendiente todo el tiempo',
@@ -99,7 +111,7 @@ export const cuestionario = {
         }
     },
     p11:{
-        texto: 'Cuales son las redes sociales que mas utiliza? Y la segunda que mas utiliza?(No leer menciones)',
+        texto: '¿Cuales es la red social que mas utiliza?',
         tipo: 'abierto',
         opciones: [{
             texto: {
@@ -112,7 +124,20 @@ export const cuestionario = {
         }]
     },
     p12:{
-        texto: 'De la siguiente lista de Dispositivos electrónicos me podría decir ud. cual o cuales tiene',
+        texto: '¿Cuales es la segunda red social que mas utiliza?',
+        tipo: 'abierto',
+        opciones: [{
+            texto: {
+            1: 'Facebook',
+            2: 'Instagram',
+            3: 'Twitter',
+            4: 'Tik Tok',
+            },
+            otraForma: {5: 'Otra(Especificar): '}
+        }]
+    },
+    p13:{
+        texto: 'De la siguiente lista de Dispositivos electrónicos me podría decir ud. ¿cual o cuales tiene?',
         tipo: 'abierto multiple',
         opciones: [{
             texto: {
@@ -124,8 +149,8 @@ export const cuestionario = {
             otraForma: {5: 'Otra(Especificar): '}
         }]
     },
-    p13:{
-        texto: 'Cuando ud. instala Programas o aplicaciones lee los términos y condiciones, No los lee o no sabia que existen los términos y condiciones?',
+    p14:{
+        texto: 'Cuando ud. instala Programas o aplicaciones ¿lee los términos y condiciones, No los lee o no sabia que existen los términos y condiciones?',
         tipo: 'unico',
         opciones: {
             1: 'Lee los términos y condiciones',
@@ -133,8 +158,8 @@ export const cuestionario = {
             3: 'No sabe de la existencia de Terminos y Condiciones'
         }
     },
-    p14:{
-        texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. Que busca?',
+    p15:{
+        texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. ¿Que busca?',
         tipo: 'abierto',
         opciones: [{
             texto: {
@@ -145,8 +170,8 @@ export const cuestionario = {
             otraForma: {4: 'Otra(Especificar): '}
         }]
     },
-    p15:{
-        texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. Que busca?',
+    p16:{
+        texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. ¿Que busca?',
         tipo: 'unico',
         opciones: {
             1: 'Utiliza Software de Antivirus Pagos',
@@ -154,18 +179,16 @@ export const cuestionario = {
             3: 'No utiliza software antivirus'
         }
     },
-    p16:{
-        texto: 'Utiliza servicios donde ingrese datos bancarios como billeteras virtuales o sitios de Compra?',
+    p17:{
+        texto: '¿Utiliza servicios donde ingrese datos bancarios como billeteras virtuales o sitios de Compra?',
         tipo: 'unico',
         opciones: {
             1: 'Si Utiliza',
             2: 'No utiliza',
         }
     },
-    p17:{
-        texto: 'Para finalizar, me podría comentar ud. cuales son las cosas debe cambiar para ser un usuario ciber seguro o aprovechar al máximo posible la Ciber Seguridad? Algo más? Algo más?(Profundizar)',
+    p18:{
+        texto: 'Para finalizar, me podría comentar ud. ¿cuales son las cosas debe cambiar para ser un usuario ciber seguro o aprovechar al máximo posible la Ciber Seguridad? Algo más? Algo más?(Profundizar)',
         tipo: 'final'
     }
 }
-
-export const tipos = ['unico', 'escala', 'abierto', 'multiple', 'final', 'abierto multiple'];
