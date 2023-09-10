@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#form{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.textoPregunta{
+    width: 90%;
+    text-align: center;
+    margin: .8rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.cajaPregunta{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+.cajaOpciones{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Cambia a flex-start */
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.textoOpcion {
+    width: 50%;    
+    text-align: left; /* Agrega esta línea */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.btnSiguiente{
+    width: 20%;
+    margin: 10px 0;
+    padding: 10px 0;
+    background-color: #801245;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: .3s ease-in-out all;
+}
+.btnSiguiente:hover{
+    background-color: #5a032c;
+    transform: scale(1.1);
+    
+}
+

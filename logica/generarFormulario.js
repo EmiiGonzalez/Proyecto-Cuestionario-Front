@@ -4,10 +4,14 @@
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
   
+  text.classList.add("textoPregunta");
 
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
+
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
   
   text.innerText = texto;
 
@@ -18,10 +22,12 @@
     const label = document.createElement("label");
     const radio = document.createElement("input");
     label.innerText = opciones[opcion];
+    label.classList.add("textoOpcion");
 
     radio.type = "radio";
     radio.name = `${tipo}`;
     radio.value = Number(opcion);
+    radio.classList.add("opcionRadio");
 
     label.appendChild(radio);
     div2.appendChild(label);
@@ -37,9 +43,14 @@
   const btnSiguiente = document.createElement("button");
   const div2 = document.createElement("div");
 
+  text.classList.add("textoPregunta");
+
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
+
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
   
   text.innerText = texto;
   div.appendChild(text);
@@ -48,10 +59,13 @@
     
     const label = document.createElement("label");
     label.innerText = opciones[opcion];
+    label.classList.add("textoOpcion");
+
     const radio = document.createElement("input");
     radio.type = "radio";
     radio.name = `${tipo}`;
     radio.value = Number(opcion) + 1;
+    radio.classList.add("opcionRadio");
 
     label.appendChild(radio);
 
@@ -69,10 +83,14 @@
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
 
+  text.classList.add("textoPregunta");
+
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
   
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -87,10 +105,12 @@
         const label = document.createElement("label");
         const radio = document.createElement("input");
         label.innerText = opciones[opcion].texto[pregunta];
+        label.classList.add("textoOpcion");
 
         radio.type = "radio";
         radio.name = `${tipo}`;
         radio.value = Number(pregunta);
+        radio.classList.add("opcionRadio");
 
         label.appendChild(radio);
         div3.appendChild(label);
@@ -125,10 +145,14 @@
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
 
+  text.classList.add("textoPregunta");
+
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
   
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -143,9 +167,11 @@
         const label = document.createElement("label");
         const radio = document.createElement("input");
         label.innerText = opciones[opcion].texto[pregunta];
+        label.classList.add("textoOpcion");
 
         radio.type = "radio";
         radio.value = Number(pregunta);
+        radio.classList.add("opcionRadio");
 
         label.appendChild(radio);
         div3.appendChild(label);
@@ -178,10 +204,14 @@
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
 
+  text.classList.add("textoPregunta");
+
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
   
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -195,9 +225,11 @@
         const label = document.createElement("label");
         const radio = document.createElement("input");
         label.innerText = opciones[opcion].texto[pregunta];
+        label.classList.add("textoOpcion");
 
         radio.type = "radio";
         radio.value = Number(pregunta);
+        radio.classList.add("opcionRadio");
 
         label.appendChild(radio);
         div3.appendChild(label);
@@ -233,6 +265,7 @@
   const textArea = document.createElement("textarea");
   const submit = document.createElement("input");
   
+  text.classList.add("textoPregunta");
 
   submit.type = "submit";
   submit.value = "Enviar";
@@ -242,6 +275,8 @@
   textArea.required = true;
   textArea.classList.add("cuadroTexto");
   text.innerText = texto;
+
+  div.classList.add("cajaPregunta");
 
   div.appendChild(text);
   div.appendChild(textArea);
@@ -257,6 +292,8 @@
   const input = document.createElement("input");
   const btnSiguiente = document.createElement("button");
 
+  text.classList.add("textoPregunta");
+
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
@@ -269,6 +306,9 @@
   input.max = 99;
   input.min = 1;
 
+  div.classList.add("cajaPregunta");
+  
+
   text.innerText = texto;
 
   div.appendChild(text);
@@ -280,8 +320,11 @@
 
  const generarSexo = ({texto, opciones}) => {
   const div = document.createElement("div");
+  const div2 = document.createElement("div");
   const text = document.createElement("p");
   const btnSiguiente = document.createElement("button");
+
+  text.classList.add("textoPregunta");
 
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
@@ -290,19 +333,23 @@
   text.innerText = texto;
 
   div.appendChild(text);
+  div.appendChild(div2);
   
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
 
   for (const opcion in opciones) {
     const label = document.createElement("label");
     const radio = document.createElement("input");
     label.innerText = opciones[opcion];
+    label.classList.add("textoOpcion");
 
     radio.type = "radio";
     radio.name = "sexo";
     radio.value = Number(opcion);
 
     label.appendChild(radio);
-    div.appendChild(label);
+    div2.appendChild(label);
   }
 
   div.appendChild(btnSiguiente);
