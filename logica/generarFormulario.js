@@ -2,6 +2,13 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
+  const btnSiguiente = document.createElement("button");
+  
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
   text.innerText = texto;
 
   div.appendChild(text);
@@ -19,16 +26,26 @@
     label.appendChild(radio);
     div2.appendChild(label);
   }
+
+  div.appendChild(btnSiguiente);
   return div;
 };
 
  const generarEscala = ({ texto, tipo, opciones }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
+  const btnSiguiente = document.createElement("button");
+  const div2 = document.createElement("div");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
   text.innerText = texto;
   div.appendChild(text);
+  div.appendChild(div2);
   for (const opcion in opciones) {
-    const div2 = document.createElement("div");
+    
     const label = document.createElement("label");
     label.innerText = opciones[opcion];
     const radio = document.createElement("input");
@@ -39,9 +56,10 @@
     label.appendChild(radio);
 
     div2.appendChild(label);
-    div.appendChild(div2);
+    
   }
 
+  div.appendChild(btnSiguiente);
   return div;
 };
 
@@ -49,6 +67,12 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
+  const btnSiguiente = document.createElement("button");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -90,6 +114,8 @@
       });
     }
   }
+
+  div.appendChild(btnSiguiente);
   return div;
 };
 
@@ -97,6 +123,12 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
+  const btnSiguiente = document.createElement("button");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -136,6 +168,7 @@
       });
     }
   }
+  div.appendChild(btnSiguiente);
   return div;
 }
 
@@ -143,6 +176,12 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
+  const btnSiguiente = document.createElement("button");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -183,6 +222,8 @@
       })
     }
   }
+
+  div.appendChild(btnSiguiente);
   return div;
 }
 
@@ -190,6 +231,13 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const textArea = document.createElement("textarea");
+  const submit = document.createElement("input");
+  
+
+  submit.type = "submit";
+  submit.value = "Enviar";
+  submit.classList.add("submit");
+  submit.name = "submit";
 
   textArea.required = true;
   textArea.classList.add("cuadroTexto");
@@ -197,6 +245,7 @@
 
   div.appendChild(text);
   div.appendChild(textArea);
+  div.appendChild(submit);
 
 
   return div;
@@ -206,7 +255,12 @@
   const div = document.createElement("div");
   const text = document.createElement("p");
   const input = document.createElement("input");
+  const btnSiguiente = document.createElement("button");
 
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+  
   input.type = "number";
   input.classList.add("inputEdad");
   input.required = true;
@@ -220,16 +274,23 @@
   div.appendChild(text);
   div.appendChild(input);
 
+  div.appendChild(btnSiguiente);
   return div;
  }
 
  const generarSexo = ({texto, opciones}) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
+  const btnSiguiente = document.createElement("button");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
 
   text.innerText = texto;
 
   div.appendChild(text);
+  
 
   for (const opcion in opciones) {
     const label = document.createElement("label");
@@ -244,6 +305,7 @@
     div.appendChild(label);
   }
 
+  div.appendChild(btnSiguiente);
   return div;
  }
 
