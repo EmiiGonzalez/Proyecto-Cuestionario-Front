@@ -3,6 +3,7 @@
   const text = document.createElement("p");
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
   
   text.classList.add("textoPregunta");
 
@@ -12,6 +13,8 @@
 
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
+
+  mensaje.classList.add("mensaje", "disabled");
   
   text.innerText = texto;
 
@@ -34,6 +37,7 @@
   }
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
 };
 
@@ -42,6 +46,7 @@
   const text = document.createElement("p");
   const btnSiguiente = document.createElement("button");
   const div2 = document.createElement("div");
+  const mensaje = document.createElement("p");
 
   text.classList.add("textoPregunta");
 
@@ -50,7 +55,7 @@
   btnSiguiente.type = "button";
 
   div.classList.add("cajaPregunta");
-  div2.classList.add("cajaOpciones");
+  div2.classList.add("cajaEscala");
   
   text.innerText = texto;
   div.appendChild(text);
@@ -59,7 +64,7 @@
     
     const label = document.createElement("label");
     label.innerText = opciones[opcion];
-    label.classList.add("textoOpcion");
+    label.classList.add("textoEscala");
 
     const radio = document.createElement("input");
     radio.type = "radio";
@@ -74,6 +79,7 @@
   }
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
 };
 
@@ -82,6 +88,8 @@
   const text = document.createElement("p");
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
+  const textArea = document.createElement("textarea");
 
   text.classList.add("textoPregunta");
 
@@ -92,18 +100,23 @@
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
 
+  mensaje.classList.add("mensaje");
+
+  textArea.classList.add("textoArea");
+
   div.appendChild(text);
   div.appendChild(div2);
+  div.appendChild(textArea);
 
   text.innerText = texto;
 
   for (const opcion in opciones) {
-    const div3 = document.createElement("div");
-    div2.appendChild(div3);
+
     if (opciones[opcion].texto) {
       for (const pregunta in opciones[opcion].texto) {
         const label = document.createElement("label");
         const radio = document.createElement("input");
+
         label.innerText = opciones[opcion].texto[pregunta];
         label.classList.add("textoOpcion");
 
@@ -113,7 +126,7 @@
         radio.classList.add("opcionRadio");
 
         label.appendChild(radio);
-        div3.appendChild(label);
+        div2.appendChild(label);
       }
     }
     if (opciones[opcion].otraForma) {
@@ -123,27 +136,32 @@
         const label = document.createElement("label");
         const radio = document.createElement("input");
         label.innerText = opciones[opcion].otraForma[clave];
+        label.classList.add("textoOpcion");
 
         radio.type = "radio";
         radio.name = `${tipo}`;
         radio.value = Number(clave);
         radio.classList.add("otra");
+        radio.classList.add("opcionRadio");
+        radio.setAttribute("data-input", "respuesta " + tipo);
 
         label.appendChild(radio);
-        div3.appendChild(label);
+        div2.appendChild(label);
       });
     }
   }
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
 };
 
- const generarMultiple = ({ texto, opciones }) => {
+ const generarMultiple = ({ texto, opciones  }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
 
   text.classList.add("textoPregunta");
 
@@ -153,6 +171,7 @@
   
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
+  
 
   div.appendChild(text);
   div.appendChild(div2);
@@ -195,44 +214,52 @@
     }
   }
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
 }
 
- const generarAbiertoMultiple = ({ texto, opciones }) => {
+ const generarAbiertoMultiple = ({ texto, opciones, tipo }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
+  const textArea = document.createElement("textarea");
 
   text.classList.add("textoPregunta");
 
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
+
+  mensaje.classList.add("mensaje");
   
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
 
+  textArea.classList.add("textoArea");
+
   div.appendChild(text);
   div.appendChild(div2);
+  div.appendChild(textArea);
   
   text.innerText = texto;
   for (const opcion in opciones) {
-    const div3 = document.createElement("div");
-    div2.appendChild(div3);
     if (opciones[opcion].texto) {
       for (const pregunta in opciones[opcion].texto) {
         const label = document.createElement("label");
-        const radio = document.createElement("input");
+        const checkbox = document.createElement("input");
         label.innerText = opciones[opcion].texto[pregunta];
         label.classList.add("textoOpcion");
 
-        radio.type = "radio";
-        radio.value = Number(pregunta);
-        radio.classList.add("opcionRadio");
+        checkbox.type = "checkbox";
+        checkbox.value = Number(pregunta);
+        checkbox.classList.add("opcionRadio");
+        checkbox.setAttribute("data-checkbox", "checkbox " + tipo);
+        checkbox.setAttribute("data-input", "checkbox cerrado");
 
-        label.appendChild(radio);
-        div3.appendChild(label);
+        label.appendChild(checkbox);
+        div2.appendChild(label);
 
       }
     }
@@ -241,21 +268,25 @@
 
       clave.forEach((clave) => {
         const label = document.createElement("label");
-        const radio = document.createElement("input");
+        const checkbox = document.createElement("input");
         label.innerText = opciones[opcion].otraForma[clave];
+        label.classList.add("textoOpcion");
 
-        radio.type = "radio";
-        radio.value = Number(clave);
-        radio.classList.add("otra");
+        checkbox.type = "checkbox";
+        checkbox.value = Number(clave);
+        checkbox.classList.add("otra");
+        checkbox.classList.add("opcionRadio");
+        checkbox.setAttribute("data-input", "respuesta " + tipo);
+        checkbox.setAttribute("data-checkbox", "checkbox " + tipo);
 
-        label.appendChild(radio);
-        div3.appendChild(label);
-
+        label.appendChild(checkbox);
+        div2.appendChild(label);
       })
     }
   }
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
 }
 
@@ -264,6 +295,9 @@
   const text = document.createElement("p");
   const textArea = document.createElement("textarea");
   const submit = document.createElement("input");
+  const mensaje = document.createElement("p");
+
+  mensaje.classList.add("mensaje");
   
   text.classList.add("textoPregunta");
 
@@ -281,6 +315,7 @@
   div.appendChild(text);
   div.appendChild(textArea);
   div.appendChild(submit);
+  div.appendChild(mensaje);
 
 
   return div;
@@ -291,6 +326,7 @@
   const text = document.createElement("p");
   const input = document.createElement("input");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
 
   text.classList.add("textoPregunta");
 
@@ -315,6 +351,7 @@
   div.appendChild(input);
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
   return div;
  }
 
@@ -323,6 +360,7 @@
   const div2 = document.createElement("div");
   const text = document.createElement("p");
   const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
 
   text.classList.add("textoPregunta");
 
@@ -353,6 +391,8 @@
   }
 
   div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
+
   return div;
  }
 

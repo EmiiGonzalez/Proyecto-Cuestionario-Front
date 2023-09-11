@@ -8,8 +8,12 @@ for (const preguntaNumero in cuestionario) {
     let tipo = cuestionario[preguntaNumero].tipo;
     const divGenerar = tiposFormulario[tipo](cuestionario[preguntaNumero]);
     divGenerar.id = preguntaNumero;
-
+    divGenerar.setAttribute('data-preguntatipo', tipo);
     formulario.appendChild(divGenerar);
+
+    if (tipo != 'abierto') {
+        divGenerar.classList.add('disabled');
+    }
 }
 
 procesarFormulario(formulario);
