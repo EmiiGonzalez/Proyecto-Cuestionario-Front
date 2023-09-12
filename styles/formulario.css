@@ -119,6 +119,7 @@
 }
 .btnSiguiente:focus {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .cajaEscala{
@@ -171,6 +172,7 @@
 }
 .inputEdad{
   width: 25%;
+  min-width: 150px;
   padding: 10px 5px;
   outline: none;
   border: none;
