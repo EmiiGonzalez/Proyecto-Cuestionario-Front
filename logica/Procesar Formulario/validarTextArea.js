@@ -8,10 +8,12 @@ export const validarTextArea = (elemento) => {
 export const editarMensaje = (elemento, msj) => {
   msj.classList.remove("disabled");
   msj.innerText = "Debe ingresar al menos 3 caracteres";
+  elemento.classList.add("error-elemento");
 
   setTimeout(() => {
     msj.classList.add("disabled");
-  }, 5000);
+    elemento.classList.remove("error-elemento");
+  }, 3000);
 
   elemento.select();
 };

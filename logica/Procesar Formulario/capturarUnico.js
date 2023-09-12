@@ -1,3 +1,5 @@
+import { validarOpciones } from "./validarOpciones.js";
+
 export const capturarUnico = (elemento) => {
     const cajaPregunta = elemento.closest('.cajaPregunta');
     const radios = cajaPregunta.querySelectorAll('input[type="radio"][name="unico"]');
@@ -13,14 +15,7 @@ export const capturarUnico = (elemento) => {
     })
 
     if (valorSeleccionado === null) {
-        mensaje.classList.remove('disabled');
-        mensaje.innerText = "Debe seleccionar una opción";
-
-        setTimeout (() => {
-            mensaje.classList.add('disabled');
-            mensaje.innerText = "";
-        }, 5000); // 5000 milisegundos = 5 segundos
-
+        validarOpciones(mensaje);
         return false
 
     } else {

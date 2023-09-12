@@ -117,6 +117,9 @@
   background-color: #5a032c;
   transform: scale(1.1);
 }
+.btnSiguiente:focus {
+  outline: none;
+}
 
 .cajaEscala{
   display: flex;
@@ -151,6 +154,20 @@
   height: 8vh;
   resize: none;
   padding: 12px 10px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #801245;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: 0.3s ease-in-out all;
+  background-color: #5a032c36;
+  border-radius: 10px;
+  color: #fff;
+}
+.textoArea:focus{
+  border-bottom: 1px solid #ac2564;
 }
 .inputEdad{
   width: 25%;
