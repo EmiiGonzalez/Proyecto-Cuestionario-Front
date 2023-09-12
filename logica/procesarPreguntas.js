@@ -10,39 +10,35 @@ import { capturarEdad } from "./Procesar Formulario/capturarEdad.js";
 export const resultados = [];
 
 export const procesarFormulario = (formulario) => {
-    const btnsSiguiente = formulario.querySelectorAll('.btnSiguiente');
-        formulario.addEventListener('submit', (e) => {
-        e.preventDefault();
-    })
+  const btnsSiguiente = formulario.querySelectorAll(".btnSiguiente");
 
-    btnsSiguiente.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const divPadre = btn.parentNode;
-            const tipo = divPadre.getAttribute('data-preguntatipo');
-            
-            const respueta = capturarRespuesta[tipo](divPadre)
-            
-            if (respueta) {
-                resultados.push(respueta);
-                console.log(resultados);
-            }
-            
-            })
-    })
+  formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 
-    
-}
+  btnsSiguiente.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const divPadre = btn.parentNode;
+      const tipo = divPadre.getAttribute("data-preguntatipo");
 
+      const respueta = capturarRespuesta[tipo](divPadre);
+
+      if (respueta) {
+        resultados.push(respueta);
+        console.log(resultados);
+      }
+    });
+  });
+};
 
 const capturarRespuesta = {
-    unico: capturarUnico ,
-    escala: capturarEscala,
-    abierto: capturarAbierto,
-    multiple: capturarMultiple,
-    final: capturarFinal,
-    "abierto multiple": capturarAbiertoMultiple,
-    edad: capturarEdad,
-    sexo: capturarSexo
-  }
-
+  unico: capturarUnico,
+  escala: capturarEscala,
+  abierto: capturarAbierto,
+  multiple: capturarMultiple,
+  final: capturarFinal,
+  "abierto multiple": capturarAbiertoMultiple,
+  edad: capturarEdad,
+  sexo: capturarSexo,
+};

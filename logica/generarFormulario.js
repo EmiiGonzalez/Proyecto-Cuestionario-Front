@@ -1,4 +1,6 @@
- const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
+import { validarEdad } from "./Procesar Formulario/validarEdad.js";
+
+const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
@@ -341,9 +343,11 @@
   input.name = "edad";
   input.max = 99;
   input.min = 1;
+  input.setAttribute("data-valid", "false");
 
   div.classList.add("cajaPregunta");
   
+  mensaje.classList.add("mensaje");
 
   text.innerText = texto;
 
@@ -352,6 +356,7 @@
 
   div.appendChild(btnSiguiente);
   div.appendChild(mensaje);
+  validarEdad(div);
   return div;
  }
 

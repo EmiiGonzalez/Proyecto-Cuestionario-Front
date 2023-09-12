@@ -152,3 +152,38 @@
   resize: none;
   padding: 12px 10px;
 }
+.inputEdad{
+  width: 25%;
+  padding: 10px 5px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #801245;
+  font-size: 1rem;  
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  letter-spacing: 1px;  
+  transition: 0.3s ease-in-out all;
+  background-color: #5a032c36;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+}
+.inputEdad:focus{
+  border-bottom: 1px solid #ac2564;
+}
+.inputEdad::-webkit-inner-spin-button,
+::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+.error-elemento{
+  animation: shake 0.5s ease-in-out;
+}
+@keyframes shake {
+  0% { transform: translateX(0); }
+  20% { transform: translateX(-10px); }
+  40% { transform: translateX(10px); }
+  60% { transform: translateX(-10px); }
+  80% { transform: translateX(10px); }
+  100% { transform: translateX(0); }
+}
