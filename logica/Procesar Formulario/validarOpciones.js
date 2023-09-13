@@ -1,14 +1,13 @@
 import { valores } from "../Cuestionario.js";
 
 /**
- * Valida un array de entradas y verifica si coincide con el array de valores esperados.
+ * Valida un array de inputs contra un array de respuestas esperadas.
  *
- * @param {array} arrayInputs - El array de entradas a validar.
- * @param {array} ArrayRespuestasCantidad - El array de valores esperados para comparar.
- * @return {boolean} Retorna true si el array de entradas coincide con el array de valores esperados, de lo contrario retorna false.
+ * @param {Array} arrayInputs - El array de inputs a validar.
+ * @param {Array} ArrayRespuestasCantidad - El array de respuestas esperadas.
+ * @return {boolean} Retorna true si los inputs del array son válidos, de lo contrario retorna false.
  */
 const validarArray = (arrayInputs, ArrayRespuestasCantidad) => {
-  
   let arrayAComparar = [];
 
   for (let valor of arrayInputs) {
@@ -30,6 +29,7 @@ const validarArray = (arrayInputs, ArrayRespuestasCantidad) => {
 
   for (let valor of arrayAComparar) {
     if (!ArrayRespuestasCantidad.includes(valor)) {
+      console.log("este valor no va " + valor);
       return false;
     }
   }
@@ -38,31 +38,45 @@ const validarArray = (arrayInputs, ArrayRespuestasCantidad) => {
 };
 
 /**
- * Valida un valor dado en base a un conjunto de entradas y un valor seleccionado.
+ * Valida los datos proporcionados basándose en los inputs, el valor elegido y el ID de la pregunta.
  *
- * @param {Array} inputs - el arreglo de valores de entrada
- * @param {any} valorElegido - el valor seleccionado para validar
- * @param {number} idPregunta - el ID de la pregunta
- * @type {array} ArrayRespuestasCantidad - El array de valores esperados para comparar.
- * @return {boolean} true si el valor es válido, false en caso contrario
+ * @param {Array} inputs - Un array de inputs.
+ * @param {string|number|Array} valorElegido - El valor elegido.
+ * @param {number} idPregunta - El ID de la pregunta.
+ * @type {Array} - cantidadDeValores array con los values de las preguntas para validar
+ * @return {boolean} Retorna true si los datos son válidos, de lo contrario false.
  */
 export const validarDato = (inputs, valorElegido, idPregunta) => {
   const cantidadDeValores = valores[idPregunta];
   let valorNumerico = 1;
 
-  if (Array.isArray(valorElegido)) {
-    if (valorElegido.length === 1) {
-      valorNumerico = Number(valorElegido[0]);
-      if (typeof valorNumerico === "object" && valorNumerico !== null) {
-        valorNumerico = Number(valorNumerico.respuestaAbierta);
+  //para preguntas con opcion otro pero de unica opcion
+  if (
+    typeof valorElegido === "object" &&
+    valorElegido !== null &&
+    valorElegido.length === 1
+  ) {
+    valorElegido.forEach((valor) => {
+      valorNumerico = Number(valor);
+      if (typeof valor === "object" && valor !== null) {
+        valorNumerico = Number(valor.respuestaAbierta);
       }
-    } else {
-      return validarArray(valorElegido, cantidadDeValores);
-    }
-  } else if (typeof valorElegido === "string" && valorElegido !== null) {
+    });
+  }
+  //para preguntas con opcion multiple y otros
+  if (
+    typeof valorElegido === "object" &&
+    valorElegido !== null &&
+    valorElegido.length > 1
+  ) {
+    return validarArray(valorElegido, cantidadDeValores);
+  }
+  //para preguntas con opcion unica
+  if (typeof valorElegido === "string" && valorElegido !== null) {
     valorNumerico = Number(valorElegido);
   }
 
+  /*Este fragmento de código itera sobre un array de inputs, verifica si cada value es un número y devuelve false si alguna entrada no es un número.*/
   for (let i = 0; i < inputs.length; i++) {
     const numeroString = inputs[i].value;
     if (isNaN(Number(numeroString))) {
