@@ -1,20 +1,16 @@
-import { validarOpciones } from "./validarOpciones.js";
-import { validarTextArea, editarMensaje } from "./validarTextArea.js";
-
-/**
- * Captura el elemento abierto seleccionado
- * @param {Element} elemento - El elemento a capturar.
- * @return {boolean|object} - Devuelve falso si no se selecciona ningún valor, de lo contrario, devuelve un objeto con el valor capturado.
- */
+import { validarDato } from "./validarOpciones.js";
+import { validarTextArea } from "./validarTextArea.js";
+import { editarMensaje } from "./editarMensaje.js";
 
 export const capturarAbierto = (elemento) => {
   const cajaPregunta = elemento.closest(".cajaPregunta");
-  const radios = cajaPregunta.querySelectorAll('input[type="radio"]');
+  const radios = Array.from(cajaPregunta.querySelectorAll('input[type="radio"]'));
   const mensaje = cajaPregunta.querySelector(".mensaje");
   const textArea = cajaPregunta.querySelector(".textoArea");
-  let control = true;
+  const idPregunta = cajaPregunta.id;
 
   let valorSeleccionado = null;
+  let control = true;
 
   radios.forEach((radio) => {
     if (radio.checked) {
@@ -28,21 +24,28 @@ export const capturarAbierto = (elemento) => {
       } else {
         valorSeleccionado = radio.value;
       }
+      return;
     }
   });
+
+  const controlInput = validarDato(radios, valorSeleccionado, idPregunta);
+
   if (valorSeleccionado === null) {
-    validarOpciones(mensaje);
+    editarMensaje(mensaje, 1);
+    return false;
+  } else if (!controlInput) {
+    editarMensaje(mensaje, 2);
     return false;
   } else {
     if (control) {
-      let respueta = {
+      const respuesta = {
         preguntaNumero: cajaPregunta.id,
         respuesta: valorSeleccionado,
       };
 
-      return respueta;
+      return respuesta;
     } else {
-      editarMensaje(textArea, mensaje);
+      editarMensaje(mensaje, 3);
       return false;
     }
   }

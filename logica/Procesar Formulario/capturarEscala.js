@@ -1,33 +1,34 @@
-import { validarOpciones } from "./validarOpciones.js";
+import { validarDato } from "./validarOpciones.js";
+import { editarMensaje } from "./editarMensaje.js";
+
+
 export const capturarEscala = (cajaPregunta) => {
-
-    const radios = cajaPregunta.querySelectorAll('input[type="radio"][name="escala"]');
+    const radios = Array.from(cajaPregunta.querySelectorAll('input[type="radio"][name="escala"]'));
     const mensaje = cajaPregunta.querySelector('.mensaje');
-
+    const idPregunta = cajaPregunta.id;
     let valorSeleccionado = null;
-    let esNumero = true;
-    
-    radios.forEach((radio) => {
-        if (radio.checked) {
-            valorSeleccionado = radio.value;
-            esNumero = !isNaN(valorSeleccionado);
-        } 
-    })
-    
 
-    if (valorSeleccionado === null || 
-        !esNumero ||
-        valorSeleccionado > 0 ||
-        valorSeleccionado <= 10) {
-        validarOpciones(mensaje);
-        return false
-
-    } else {
-        let respueta = {
-            preguntaNumero : cajaPregunta.id,
-            respuesta : valorSeleccionado,
+    for (let i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            valorSeleccionado = radios[i].value;
+            break;
         }
-        return respueta
+    }
+    
+    let controlInput = validarDato(radios, valorSeleccionado, idPregunta);
+    
+    if (valorSeleccionado === null) {
+        editarMensaje(mensaje, 1);
+        return false;
+    } else if (!controlInput) {
+        editarMensaje(mensaje, 2);
+        return false;
+    } else {
+        let respuesta = {
+            preguntaNumero: idPregunta,
+            respuesta: valorSeleccionado
+        };
+        return respuesta;
     }
 }
 

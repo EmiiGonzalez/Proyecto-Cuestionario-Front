@@ -1,4 +1,6 @@
-import { validarOpciones } from "./validarOpciones.js";
+import { validarDato } from "./validarOpciones.js";
+import { validarTextArea } from "./validarTextArea.js";
+import { editarMensaje } from "./editarMensaje.js";
 
 export const capturarUnico = (elemento) => {
     const cajaPregunta = elemento.closest('.cajaPregunta');

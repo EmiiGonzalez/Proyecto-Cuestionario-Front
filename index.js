@@ -11,7 +11,7 @@ for (const preguntaNumero in cuestionario) {
     divGenerar.setAttribute('data-preguntatipo', tipo);
     formulario.appendChild(divGenerar);
 
-    if (tipo != 'escala') {
+    if (tipo != 'abierto multiple') {
         divGenerar.classList.add('disabled');
     }
 }

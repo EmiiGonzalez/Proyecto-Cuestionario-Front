@@ -1,5 +1,6 @@
-import { validarTextArea , editarMensaje } from "./validarTextArea.js";
-import { validarOpciones } from "./validarOpciones.js";
+import { validarDato } from "./validarOpciones.js";
+import { validarTextArea } from "./validarTextArea.js";
+import { editarMensaje } from "./editarMensaje.js";
 
 export const capturarAbiertoMultiple = (elemento) => {
   const cajaPregunta = elemento.closest(".cajaPregunta");
@@ -9,8 +10,8 @@ export const capturarAbiertoMultiple = (elemento) => {
   const mensaje = cajaPregunta.querySelector(".mensaje");
   const textArea = cajaPregunta.querySelector(".textoArea");
   let control = true;
-  let valorSeleccionado = [];
 
+  let valorSeleccionado = [];
   checkbox.forEach((check) => {
     if (check.checked) {
       if (check.dataset.input === "respuesta abierto multiple") {
@@ -28,24 +29,27 @@ export const capturarAbiertoMultiple = (elemento) => {
       }
     }
   });
-  //console.log(valorSeleccionado);
-  console.log(valorSeleccionado.length);
+
+  let controlInput = validarDato(checkbox, valorSeleccionado, cajaPregunta.id);
   if (valorSeleccionado.length <= 0) {
-
-    validarOpciones(mensaje);
+    editarMensaje(mensaje, 1);
     return false;
-    
   } else {
-    if (control) {
-      let respueta = {
-        preguntaNumero: cajaPregunta.id,
-        respuesta: valorSeleccionado,
-      };
-
-      return respueta;
-    } else {
-      editarMensaje(textArea, mensaje);
+    if (!controlInput) {
+      editarMensaje(mensaje, 2);
       return false;
+    } else {
+      if (control) {
+        let respueta = {
+          preguntaNumero: cajaPregunta.id,
+          respuesta: valorSeleccionado,
+        };
+
+        return respueta;
+      } else {
+        editarMensaje(mensaje, 3);
+        return false;
+      }
     }
   }
 };
