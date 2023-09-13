@@ -19,4 +19,5 @@ const mensajes = {
   1: "Debe seleccionar una opción",
   2: "El valor que se intenta enviar es invalido",
   3: "Debe ingresar al menos 3 caracteres",
+  4: "Por favor ingrese su edad entre 1 y 99",
 };

@@ -1,4 +1,8 @@
-import { valores } from "../Cuestionario.js";
+import { valores, valoresPreguntas } from "../Cuestionario.js";
+
+const validarIdPregunta = (idPregunta) => {
+  return valoresPreguntas.includes(idPregunta);
+}
 
 /**
  * Valida un array de inputs contra un array de respuestas esperadas.
@@ -47,43 +51,54 @@ const validarArray = (arrayInputs, ArrayRespuestasCantidad) => {
  * @return {boolean} Retorna true si los datos son válidos, de lo contrario false.
  */
 export const validarDato = (inputs, valorElegido, idPregunta) => {
-  const cantidadDeValores = valores[idPregunta];
-  let valorNumerico = 1;
+  try {
+    const cantidadDeValores = valores[idPregunta];
+    let valorNumerico = 1;
 
-  //para preguntas con opcion otro pero de unica opcion
-  if (
-    typeof valorElegido === "object" &&
-    valorElegido !== null &&
-    valorElegido.length === 1
-  ) {
-    valorElegido.forEach((valor) => {
-      valorNumerico = Number(valor);
-      if (typeof valor === "object" && valor !== null) {
-        valorNumerico = Number(valor.respuestaAbierta);
-      }
-    });
-  }
-  //para preguntas con opcion multiple y otros
-  if (
-    typeof valorElegido === "object" &&
-    valorElegido !== null &&
-    valorElegido.length > 1
-  ) {
-    return validarArray(valorElegido, cantidadDeValores);
-  }
-  //para preguntas con opcion unica
-  if (typeof valorElegido === "string" && valorElegido !== null) {
-    valorNumerico = Number(valorElegido);
-  }
-
-  /*Este fragmento de código itera sobre un array de inputs, verifica si cada value es un número y devuelve false si alguna entrada no es un número.*/
-  for (let i = 0; i < inputs.length; i++) {
-    const numeroString = inputs[i].value;
-    if (isNaN(Number(numeroString))) {
-      return false;
+    //para preguntas con opcion otro pero de unica opcion
+    if (
+      typeof valorElegido === "object" &&
+      valorElegido !== null &&
+      valorElegido.length === 1
+    ) {
+      valorElegido.forEach((valor) => {
+        valorNumerico = Number(valor);
+        if (typeof valor === "object" && valor !== null) {
+          valorNumerico = Number(valor.respuestaAbierta);
+        }
+      });
     }
+    //para preguntas con opcion multiple y otros
+    if (
+      typeof valorElegido === "object" &&
+      valorElegido !== null &&
+      valorElegido.length > 1
+    ) {
+      return (
+        validarArray(valorElegido, cantidadDeValores)
+      );
+    }
+    //para preguntas con opcion unica
+
+    if (typeof valorElegido === "string" && valorElegido !== null) {
+      
+      if (validarIdPregunta(idPregunta) === false) {
+        throw new Error("Se modifico el id de la pregunta");
+      }
+      valorNumerico = Number(valorElegido);
+      
+      
+    }
+
+    /*Este fragmento de código itera sobre un array de inputs, verifica si cada value es un número y devuelve false si alguna entrada no es un número.*/
+    for (let i = 0; i < inputs.length; i++) {
+      const numeroString = inputs[i].value;
+      if (isNaN(Number(numeroString))) {
+        return false;
+      }
+    }
+    return cantidadDeValores.includes(valorNumerico);
+  } catch (error) {
+    return false;
   }
-
-  return cantidadDeValores.includes(valorNumerico);
 };
-

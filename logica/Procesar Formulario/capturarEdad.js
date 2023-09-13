@@ -1,20 +1,17 @@
+import { valoresPreguntas } from "../Cuestionario.js";
+import { editarMensaje } from "./editarMensaje.js";
+
 export const capturarEdad = (elemento) => {
     const mensaje = elemento.querySelector('.mensaje');
     const input = elemento.querySelector('.inputEdad');
 
-    if (input.dataset.valid === 'false') {
-        mensaje.classList.remove('disabled');
-        input.classList.add('error-elemento');
-        mensaje.innerText = "Por favor ingrese su edad";
-        input.dataset.valid = false;
-        setTimeout(() => {
-            input.classList.remove('error-elemento');
-            mensaje.classList.add('disabled');
-            mensaje.innerText = "";
-        }, 3500);
+    const control = (input.dataset.valid === 'true' && (valoresPreguntas.includes(elemento.id)) === true) ? true : false
+    
+    if (!control) {
+        editarMensaje(mensaje, 4);
         return false
     }
-    if (input.dataset.valid === 'true') {
+    if (control) {
         let respueta = {
             preguntaNumero: elemento.id,
             respuesta: input.value
