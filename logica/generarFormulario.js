@@ -56,6 +56,8 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
 
+  mensaje.classList.add("mensaje", "disabled");
+
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaEscala");
   
@@ -73,6 +75,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
     radio.name = `${tipo}`;
     radio.value = Number(opcion) + 1;
     radio.classList.add("opcionRadio");
+    radio.setAttribute("data-input", "escala");
 
     label.appendChild(radio);
 

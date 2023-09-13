@@ -25,8 +25,4 @@ export const capturarUnico = (elemento) => {
         }
         return respueta
     }
-
-    
-
-    //console.log(respueta);
 }
