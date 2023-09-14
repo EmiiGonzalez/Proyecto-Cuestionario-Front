@@ -9,6 +9,7 @@ export const capturarUnico = (elemento) => {
   );
   const mensaje = cajaPregunta.querySelector(".mensaje");
   const idPregunta = cajaPregunta.id;
+  const tipo = "unico";
 
   let valorSeleccionado = null;
 
@@ -18,7 +19,7 @@ export const capturarUnico = (elemento) => {
     }
   });
 
-  const controlInput = validarDato(radios, valorSeleccionado, idPregunta);
+  const controlInput = validarDato(valorSeleccionado, idPregunta, tipo);
 
   if (valorSeleccionado === null) {
     editarMensaje(mensaje, 1);

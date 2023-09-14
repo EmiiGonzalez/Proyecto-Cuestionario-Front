@@ -86,11 +86,16 @@ const valSexo = (valorElegido, idPregunta) => {
   return (validarValue(valorElegido, idPregunta) && validarIdPregunta(idPregunta))
 }
 
+const valUnico = (valorElegido, idPregunta) => {
+  return (validarValue(valorElegido, idPregunta) && validarIdPregunta(idPregunta))
+}
+
 const validarValuesPorTipo = {
   abierto: valAbierto,
   abiertoMultiple: valAbiertoMultiple,
   escala: valEscala,
-  sexo : valSexo
+  sexo : valSexo, 
+  unico : valUnico
 }
 
 export const validarDato = (valorElegido, idPregunta, tipo) => {

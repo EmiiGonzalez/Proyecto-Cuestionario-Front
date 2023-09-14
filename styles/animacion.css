@@ -1,0 +1,34 @@
+/* Definir la animación para desaparecer */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Definir la animación para aparecer */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Aplicar las animaciones a los elementos que las utilizarán */
+.transicion-difuminado {
+    animation-duration: 1s; /* Duración de la animación */
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+
+.fade-out {
+    animation-name: fadeOut;
+}
+
+.fade-in {
+    animation-name: fadeIn;
+}

@@ -11,10 +11,8 @@ for (const preguntaNumero in cuestionario) {
     divGenerar.id = preguntaNumero;
     divGenerar.setAttribute('data-preguntatipo', tipo);
     formulario.appendChild(divGenerar);
+    divGenerar.classList.add('disabled', 'transicion-difuminado');
 
-    if (tipo != 'edad') {
-        divGenerar.classList.add('disabled');
-    }
 }
 
 procesarFormulario(formulario);
