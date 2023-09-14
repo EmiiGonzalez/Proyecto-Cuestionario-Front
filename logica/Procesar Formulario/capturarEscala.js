@@ -26,6 +26,7 @@ export const capturarEscala = (cajaPregunta) => {
         return false;
     } else {
         let respuesta = {
+            tipoR: "unica",
             preguntaNumero: idPregunta,
             respuesta: valorSeleccionado
         };

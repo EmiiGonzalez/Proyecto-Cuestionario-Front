@@ -1,22 +1,19 @@
 import { capturarAbierto } from "./Procesar Formulario/capturarAbierto.js";
+import { filtrarPorTipoR } from "./filtrarResultados.js";
 import { capturarAbiertoMultiple } from "./Procesar Formulario/capturarAbiertoMultiple.js";
 import { capturarEscala } from "./Procesar Formulario/capturarEscala.js";
 import { capturarFinal } from "./Procesar Formulario/capturarFinal.js";
 import { capturarSexo } from "./Procesar Formulario/capturarSexo.js";
 import { capturarUnico } from "./Procesar Formulario/capturarUnico.js";
 import { capturarEdad } from "./Procesar Formulario/capturarEdad.js";
-
-export let resultados = [];
+import { controladorDePeticiones } from "./controlador.js";
 
 export const procesarFormulario = (formulario) => {
   const btnsSiguiente = formulario.querySelectorAll(".btnSiguiente");
   const primerElemento = formulario.children[0];
   primerElemento.classList.remove('disabled');
   let elementoContador = 0;
-
-  formulario.addEventListener("submit", (e) => {
-    e.preventDefault();
-  });
+  let resultados = [];
 
   btnsSiguiente.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -32,9 +29,6 @@ export const procesarFormulario = (formulario) => {
         elementoContador++;
         let elementoSiguiente = formulario.children[elementoContador];
 
-        console.log("elemento actual", elementoActual);
-        console.log("elemento siguiente", elementoSiguiente);
-
         elementoActual.classList.remove('fade-out');
         elementoSiguiente.classList.remove('fade-in');
         
@@ -46,12 +40,25 @@ export const procesarFormulario = (formulario) => {
           elementoSiguiente.classList.add('fade-in');
         } , 500);
       }
+      
     });
-
-
   });
 
-
+  formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const elementoFinal = document.querySelector('div[data-preguntatipo="final"]');
+    const tipo = elementoFinal.getAttribute("data-preguntatipo");
+    const respueta = capturarRespuesta[tipo](elementoFinal);
+    
+    if (respueta) {
+      resultados.push(respueta);
+      // const arrayUnicos = filtrarPorTipoR(resultados, "unica");
+      // const arrayAbiertos = filtrarPorTipoR(resultados, "abierta");
+      // const arrayAbiertoMultiple = filtrarPorTipoR(resultados, "multiple");
+      //controladorDePeticiones(resultados);
+    }
+  });
+  
 };
 
 

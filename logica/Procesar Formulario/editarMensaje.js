@@ -18,6 +18,7 @@ export const editarMensaje = (mensaje, tipoDeError) => {
 const mensajes = {
   1: "Debe seleccionar una opción",
   2: "El valor que se intenta enviar es invalido",
-  3: "Debe ingresar al menos 3 caracteres",
+  3: "Debe ingresar al menos 4 caracteres",
   4: "Por favor ingrese un numero entre 1 y 99",
+  5: "Limite de caracteres exedido, maximo 150 caracteres",
 };

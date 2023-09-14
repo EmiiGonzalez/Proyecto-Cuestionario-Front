@@ -40,6 +40,7 @@ export const capturarAbierto = (elemento) => {
   } else {
     if (control) {
       const respuesta = {
+        tipoR: "abierta",
         preguntaNumero: cajaPregunta.id,
         respuesta: valorSeleccionado,
       };

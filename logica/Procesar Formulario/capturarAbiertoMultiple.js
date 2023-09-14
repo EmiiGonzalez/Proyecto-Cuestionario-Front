@@ -43,6 +43,7 @@ export const capturarAbiertoMultiple = (elemento) => {
     } else {
       if (control) {
         let respueta = {
+          tipoR: "multiple",
           preguntaNumero: cajaPregunta.id,
           respuesta: valorSeleccionado,
         };

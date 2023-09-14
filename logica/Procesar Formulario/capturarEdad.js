@@ -13,6 +13,7 @@ export const capturarEdad = (elemento) => {
     }
     if (control) {
         let respueta = {
+            tipoR: "unica",
             preguntaNumero: elemento.id,
             respuesta: input.value
         }

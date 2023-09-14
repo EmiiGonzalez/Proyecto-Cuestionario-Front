@@ -14,6 +14,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   btnSiguiente.type = "button";
 
   div.classList.add("cajaPregunta");
+
   div2.classList.add("cajaOpciones");
 
   mensaje.classList.add("mensaje", "disabled");

@@ -90,12 +90,17 @@ const valUnico = (valorElegido, idPregunta) => {
   return (validarValue(valorElegido, idPregunta) && validarIdPregunta(idPregunta))
 }
 
+const valFinal = (valorElegido, idPregunta) => {
+  return (validarIdPregunta(idPregunta))
+}
+
 const validarValuesPorTipo = {
   abierto: valAbierto,
   abiertoMultiple: valAbiertoMultiple,
   escala: valEscala,
   sexo : valSexo, 
-  unico : valUnico
+  unico : valUnico,
+  final : valFinal
 }
 
 export const validarDato = (valorElegido, idPregunta, tipo) => {

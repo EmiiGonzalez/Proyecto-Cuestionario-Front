@@ -6,3 +6,4 @@ export const validarTextArea = (elemento) => {
   }
   return false;
 };
+
