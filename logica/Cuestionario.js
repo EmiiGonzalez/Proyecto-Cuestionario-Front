@@ -56,7 +56,7 @@ export const cuestionario = {
     },
     p6:{
         texto: '¿Como acostumbra ud. a guardar sus contraseñas para recordarlas?',
-        tipo: 'multiple',
+        tipo: 'abierto multiple',
         opciones: [{
             texto: {
             1: 'En forma Digital (incluye gestores, archivos, mensajes en redes sociales)',
@@ -68,7 +68,7 @@ export const cuestionario = {
     },
     p7:{
         texto: 'Además del uso de contraseñas, ¿Que otros métodos utiliza para acceder a distintas aplicaciones en el uso cotidiano de dispositivos electrónicos?',
-        tipo: 'multiple',
+        tipo: 'abierto multiple',
         opciones: [{
             texto: {
             1: 'Teléfonos (recepción de código por sms, código por wpp, códigos por email)',

@@ -161,7 +161,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   return div;
 };
 
- const generarMultiple = ({ texto, opciones  }) => {
+ /*const generarMultiple = ({ texto, opciones  }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
@@ -221,7 +221,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(btnSiguiente);
   div.appendChild(mensaje);
   return div;
-}
+}*/
 
  const generarAbiertoMultiple = ({ texto, opciones, tipo }) => {
   const div = document.createElement("div");
@@ -308,11 +308,10 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
 
   submit.type = "submit";
   submit.value = "Enviar";
-  submit.classList.add("submit");
+  submit.classList.add("btnSubmit");
   submit.name = "submit";
 
-  textArea.required = true;
-  textArea.classList.add("cuadroTexto");
+  textArea.classList.add("textoArea");
   text.innerText = texto;
 
   div.classList.add("cajaPregunta");
@@ -341,11 +340,8 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   
   input.type = "number";
   input.classList.add("inputEdad");
-  input.required = true;
   input.placeholder = "Inserte su edad";
   input.name = "edad";
-  input.max = 99;
-  input.min = 1;
   input.setAttribute("data-valid", "false");
 
   div.classList.add("cajaPregunta");
@@ -380,6 +376,8 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
 
   div.appendChild(text);
   div.appendChild(div2);
+
+  mensaje.classList.add("mensaje");
   
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
@@ -393,6 +391,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
     radio.type = "radio";
     radio.name = "sexo";
     radio.value = Number(opcion);
+    radio.setAttribute("data-input", "genero");
 
     label.appendChild(radio);
     div2.appendChild(label);
@@ -408,7 +407,6 @@ export const tiposFormulario = {
   unico: generarUnicaOpcion ,
   escala: generarEscala,
   abierto: generarAbierto,
-  multiple: generarMultiple,
   final: generarFinal,
   "abierto multiple": generarAbiertoMultiple,
   edad: generarEdad,

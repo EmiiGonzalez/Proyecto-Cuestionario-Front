@@ -2,7 +2,6 @@ import { capturarAbierto } from "./Procesar Formulario/capturarAbierto.js";
 import { capturarAbiertoMultiple } from "./Procesar Formulario/capturarAbiertoMultiple.js";
 import { capturarEscala } from "./Procesar Formulario/capturarEscala.js";
 import { capturarFinal } from "./Procesar Formulario/capturarFinal.js";
-import { capturarMultiple } from "./Procesar Formulario/capturarMultiple.js";
 import { capturarSexo } from "./Procesar Formulario/capturarSexo.js";
 import { capturarUnico } from "./Procesar Formulario/capturarUnico.js";
 import { capturarEdad } from "./Procesar Formulario/capturarEdad.js";
@@ -36,7 +35,6 @@ const capturarRespuesta = {
   unico: capturarUnico,
   escala: capturarEscala,
   abierto: capturarAbierto,
-  multiple: capturarMultiple,
   final: capturarFinal,
   "abierto multiple": capturarAbiertoMultiple,
   edad: capturarEdad,

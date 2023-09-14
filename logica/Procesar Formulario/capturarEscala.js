@@ -7,6 +7,7 @@ export const capturarEscala = (cajaPregunta) => {
     const mensaje = cajaPregunta.querySelector('.mensaje');
     const idPregunta = cajaPregunta.id;
     let valorSeleccionado = null;
+    const tipo = "escala";
 
     for (let i = 0; i < radios.length; i++) {
         if (radios[i].checked) {
@@ -15,7 +16,7 @@ export const capturarEscala = (cajaPregunta) => {
         }
     }
     
-    let controlInput = validarDato(radios, valorSeleccionado, idPregunta);
+    let controlInput = validarDato(valorSeleccionado, idPregunta, tipo);
     
     if (valorSeleccionado === null) {
         editarMensaje(mensaje, 1);

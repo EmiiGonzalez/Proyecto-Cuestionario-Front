@@ -12,7 +12,7 @@ for (const preguntaNumero in cuestionario) {
     divGenerar.setAttribute('data-preguntatipo', tipo);
     formulario.appendChild(divGenerar);
 
-    if (tipo != 'unico') {
+    if (tipo != 'edad') {
         divGenerar.classList.add('disabled');
     }
 }

@@ -1,4 +1,3 @@
 export const capturarMultiple = (e) => {
-    console.log(e.getAttribute('data-preguntatipo'));
+    console.log("No hay preguntas multiples cerradas");
 }
-

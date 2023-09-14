@@ -8,6 +8,7 @@ export const capturarAbierto = (elemento) => {
   const mensaje = cajaPregunta.querySelector(".mensaje");
   const textArea = cajaPregunta.querySelector(".textoArea");
   const idPregunta = cajaPregunta.id;
+  const tipo = "abierto";
 
   let valorSeleccionado = null;
   let control = true;
@@ -15,7 +16,7 @@ export const capturarAbierto = (elemento) => {
   radios.forEach((radio) => {
     if (radio.checked) {
       if (radio.dataset.input === "respuesta abierto") {
-        const textoArea = textArea.value;
+        const textoArea = textArea.value.trim();
         valorSeleccionado = {
           respuestaAbierta: radio.value,
           texto: textoArea,
@@ -28,7 +29,7 @@ export const capturarAbierto = (elemento) => {
     }
   });
 
-  const controlInput = validarDato(radios, valorSeleccionado, idPregunta);
+  const controlInput = validarDato(valorSeleccionado, idPregunta, tipo);
 
   if (valorSeleccionado === null) {
     editarMensaje(mensaje, 1);
@@ -42,7 +43,6 @@ export const capturarAbierto = (elemento) => {
         preguntaNumero: cajaPregunta.id,
         respuesta: valorSeleccionado,
       };
-
       return respuesta;
     } else {
       editarMensaje(mensaje, 3);
