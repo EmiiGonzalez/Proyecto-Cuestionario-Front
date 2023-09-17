@@ -1,7 +1,7 @@
 export const controladorDePeticiones = (resultados) => {
     
     const datosAEnviar = JSON.stringify(resultados);
-    const url = "http://localhost:3000/api/respuestas";
+    const url = "http://localhost:3000/insertar";
 
     fetch(url, {
         method: "POST",

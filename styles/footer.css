@@ -1,0 +1,71 @@
+@import url(https://use.fontawesome.com/releases/v6.4.2/css/all.css);
+
+:root {
+    --ig-color: #e1306c;
+    --linkeding-color: #0072b1;
+    --github-color: #00ff9d;
+}
+
+.footer {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.footer__redes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-redes{
+    border-radius: 50%;
+    box-sizing: border-box;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+    background: rgba(0, 0, 0, 0);
+    margin: 0 10px;
+    cursor: default;
+
+}
+
+.link-redes:nth-child(1) {
+    color: var(--ig-color);
+}
+.link-redes:nth-child(1):hover {
+    background: var(--ig-color);
+    color: #000;
+    box-shadow: 0 0 5px var(--ig-color), 0 0 25px var(--ig-color), 0 0 50px var(--ig-color), 0 0 200px var(--ig-color);
+}
+
+.link-redes:nth-child(2){
+    color: var(--linkeding-color);
+}
+.link-redes:nth-child(2):hover {
+    background: var(--linkeding-color);
+    color: #000;
+    box-shadow: 0 0 5px var(--linkeding-color), 0 0 25px var(--linkeding-color), 0 0 50px var(--linkeding-color), 0 0 200px var(--linkeding-color);
+}
+.link-redes:nth-child(3){
+    color: var(--github-color);
+}
+.link-redes:nth-child(3):hover {
+    background: var(--github-color);
+    color: #000;
+    box-shadow: 0 0 5px var(--github-color), 0 0 25px var(--github-color), 0 0 50px var(--github-color), 0 0 200px var(--github-color);
+}
+i{
+    font-size: 2rem;
+    -webkit-box-reflect: below 5px linear-gradient(to bottom, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.459));
+    cursor: pointer;
+}
+
