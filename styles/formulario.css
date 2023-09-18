@@ -134,7 +134,9 @@
   justify-content: center;
   align-items: flex-start;
   width: 90%;
+  min-width: 225px;
   text-align: left;
+  flex-wrap: wrap;
 }
 .textoEscala{
   font-size: 1rem;
@@ -148,6 +150,7 @@
   margin: 0 10px;
   padding: 5px;
 }
+
 .mensaje{
   font-size: 1rem;
   font-weight: 600;

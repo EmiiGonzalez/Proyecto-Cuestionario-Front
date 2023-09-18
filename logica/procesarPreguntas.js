@@ -31,6 +31,10 @@ export const procesarFormulario = (formulario) => {
         let elementoActual = formulario.firstElementChild;
         let elementoSiguiente = formulario.children[1];
 
+        setTimeout(() => {
+          elementoActual.classList.add("fade-in");
+        }, 500);
+
         elementoActual.classList.remove('fade-out');
         elementoSiguiente.classList.remove('fade-in');
 
@@ -45,13 +49,6 @@ export const procesarFormulario = (formulario) => {
           elementoSiguiente.classList.add('fade-in');
           elementoActual.remove();
         } , 500);
-        if (elementoContador == 1) {
-          setTimeout(() => {
-            let footer = document.querySelector(".footer");
-            footer.style.display = "none";
-            footer.classList.add("fade-out");
-          } , 500);
-        }
         console.log(porcentaje + "%");
       }
       

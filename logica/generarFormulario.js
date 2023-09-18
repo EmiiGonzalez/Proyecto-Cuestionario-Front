@@ -68,6 +68,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   for (const opcion in opciones) {
     
     const label = document.createElement("label");
+
     label.innerText = opciones[opcion];
     label.classList.add("textoEscala");
 
