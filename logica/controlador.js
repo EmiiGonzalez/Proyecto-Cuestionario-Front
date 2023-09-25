@@ -1,7 +1,9 @@
-export const controladorDePeticiones = (resultados) => {
+import { mensajeFinal } from "./mensajeFinal.js";
+export const controladorDePeticiones = (resultados, formularioDiv) => {
     
     const datosAEnviar = JSON.stringify(resultados);
-    const url = "http://localhost:3000/insertar";
+    const url = "http://localhost:3000/rFormWeb";
+    formularioDiv.children[0].remove();
 
     fetch(url, {
         method: "POST",
@@ -12,15 +14,13 @@ export const controladorDePeticiones = (resultados) => {
     })
     .then(response => response.json())
     .then(data => {
-        const idFormulario = data.id;
-        mensajeFinal(idFormulario);
+        console.log(data);
+        const idFormulario = data.idcuestn;
+        formularioDiv.appendChild(mensajeFinal(idFormulario, true));
     })
     .catch(error => {
         console.log(error);
+        formularioDiv.appendChild(mensajeFinal(null, false));
     })
 
-}
-
-const mensajeFinal = (id) => {
-    console.log(id);
 }

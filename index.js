@@ -2,8 +2,10 @@ import { cuestionario } from "./logica/Cuestionario.js";
 import { tiposFormulario } from "./logica/generarFormulario.js";
 import { procesarFormulario } from "./logica/procesarPreguntas.js";
 
+
 const formulario = document.getElementById("form");
 const btnInicio = document.querySelector(".btnIniciar");
+
 
 btnInicio.addEventListener("click", () => {
   const cajaInicio = btnInicio.parentNode.parentNode;

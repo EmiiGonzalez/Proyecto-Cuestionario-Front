@@ -12,11 +12,11 @@ export const procesarFormulario = (formulario) => {
   const btnsSiguiente = formulario.querySelectorAll(".btnSiguiente");
   const primerElemento = formulario.children[0];
   primerElemento.classList.remove('disabled');
-  let elementoContador = 0;
+
+  const cantidadPreguntas = formulario.children.length;
+  let contadorPreguntas = 0;
   let resultados = [];
-  const cantDePreguntas = formulario.children.length;
-  let porcentaje = 0;
-  
+
   btnsSiguiente.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
@@ -38,8 +38,6 @@ export const procesarFormulario = (formulario) => {
         elementoActual.classList.remove('fade-out');
         elementoSiguiente.classList.remove('fade-in');
 
-        elementoContador++;
-        porcentaje = (elementoContador / cantDePreguntas) * 100;
         
         setTimeout(() => {
           elementoActual.classList.add("disabled");
@@ -49,9 +47,8 @@ export const procesarFormulario = (formulario) => {
           elementoSiguiente.classList.add('fade-in');
           elementoActual.remove();
         } , 500);
-        console.log(porcentaje + "%");
+        contadorPreguntas++;
       }
-      
     });
   });
 
@@ -60,13 +57,12 @@ export const procesarFormulario = (formulario) => {
     const elementoFinal = document.querySelector('div[data-preguntatipo="final"]');
     const tipo = elementoFinal.getAttribute("data-preguntatipo");
     const respueta = capturarRespuesta[tipo](elementoFinal);
+    contadorPreguntas++;
     
-    if (respueta) {
+
+    if (respueta && cantidadPreguntas === contadorPreguntas) {
       resultados.push(respueta);
-      // const arrayUnicos = filtrarPorTipoR(resultados, "unica");
-      // const arrayAbiertos = filtrarPorTipoR(resultados, "abierta");
-      // const arrayAbiertoMultiple = filtrarPorTipoR(resultados, "multiple");
-      controladorDePeticiones(resultados);
+      controladorDePeticiones(resultados, formulario);
     }
   });
   
