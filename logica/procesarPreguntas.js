@@ -22,12 +22,11 @@ export const procesarFormulario = (formulario) => {
       e.preventDefault();
       const divPadre = btn.parentNode;
       const tipo = divPadre.getAttribute("data-preguntatipo");
-
       const respueta = capturarRespuesta[tipo](divPadre);
 
       if (respueta) {
+        btn.disabled = true;
         resultados.push(respueta);
-
         let elementoActual = formulario.firstElementChild;
         let elementoSiguiente = formulario.children[1];
 
@@ -48,7 +47,9 @@ export const procesarFormulario = (formulario) => {
           elementoActual.remove();
         } , 500);
         contadorPreguntas++;
+        
       }
+      console.log(resultados);
     });
   });
 
@@ -59,10 +60,11 @@ export const procesarFormulario = (formulario) => {
     const respueta = capturarRespuesta[tipo](elementoFinal);
     contadorPreguntas++;
     
-
+    console.log(resultados);
     if (respueta && cantidadPreguntas === contadorPreguntas) {
       resultados.push(respueta);
       controladorDePeticiones(resultados, formulario);
+      
     }
   });
   
