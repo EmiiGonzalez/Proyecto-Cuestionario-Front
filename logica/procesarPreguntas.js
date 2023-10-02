@@ -22,8 +22,11 @@ export const procesarFormulario = (formulario) => {
       e.preventDefault();
       const divPadre = btn.parentNode;
       const tipo = divPadre.getAttribute("data-preguntatipo");
+
+      //valido y capturo la respuesta de la pregunta
       const respueta = capturarRespuesta[tipo](divPadre);
 
+      //si hay respuesta, muestro el siguiente elemento
       if (respueta) {
         btn.disabled = true;
         resultados.push(respueta);
@@ -74,7 +77,6 @@ export const procesarFormulario = (formulario) => {
 const capturarRespuesta = {
   unico: capturarUnico,
   escala: capturarEscala,
-  abierto: capturarAbierto,
   final: capturarFinal,
   "abierto multiple": capturarAbiertoMultiple,
   edad: capturarEdad,

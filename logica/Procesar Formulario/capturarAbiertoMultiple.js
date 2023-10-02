@@ -1,6 +1,7 @@
 import { validarDato } from "./validarOpciones.js";
 import { validarTextArea } from "./validarTextArea.js";
 import { editarMensaje } from "./editarMensaje.js";
+import { validarMultiple, mensajeMultilple } from "./validarMultiple.js";
 
 export const capturarAbiertoMultiple = (elemento) => {
   const cajaPregunta = elemento.closest(".cajaPregunta");
@@ -33,6 +34,13 @@ export const capturarAbiertoMultiple = (elemento) => {
 
   //esto es para validar que no se hayan cambiado los valores desde el inspector de elementos
   let controlInput = validarDato(valorSeleccionado, cajaPregunta.id, tipo);
+  //valido que haya entre 1 y 3 opciones seleccionadas
+  let cantRespOk = validarMultiple(valorSeleccionado)
+
+  if (!cantRespOk){
+    editarMensaje(mensaje, 6);
+    return false
+  }
   if (valorSeleccionado.length <= 0) {
     editarMensaje(mensaje, 1);
     return false;
