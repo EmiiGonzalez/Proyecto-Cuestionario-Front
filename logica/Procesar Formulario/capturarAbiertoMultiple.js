@@ -13,35 +13,37 @@ export const capturarAbiertoMultiple = (elemento) => {
   let control = true;
   const tipo = "abiertoMultiple";
 
-  let valorSeleccionado = [];
+  let valorSeleccionado = {
+    respValues: "",
+    respText: ""
+  };
   checkbox.forEach((check) => {
     if (check.checked) {
       if (check.dataset.input === "respuesta abierto multiple") {
         const textoArea = textArea.value.trim();
-        const valorAbierto = {
-          respuestaAbierta: check.value,
-          texto: textoArea,
-        };
+
+        valorSeleccionado.respText = textoArea;
+        valorSeleccionado.respValues += check.value;
+        
         control = validarTextArea(textArea, mensaje);
 
-        valorSeleccionado.push(valorAbierto);
       }
       if (check.dataset.input === "checkbox cerrado") {
-        valorSeleccionado.push(check.value);
+        valorSeleccionado.respValues += check.value;
       }
     }
   });
 
   //esto es para validar que no se hayan cambiado los valores desde el inspector de elementos
-  let controlInput = validarDato(valorSeleccionado, cajaPregunta.id, tipo);
+  let controlInput = validarDato(valorSeleccionado.respValues.split(""), cajaPregunta.id, tipo);
   //valido que haya entre 1 y 3 opciones seleccionadas
-  let cantRespOk = validarMultiple(valorSeleccionado)
+  let cantRespOk = validarMultiple(valorSeleccionado.respValues)
 
   if (!cantRespOk){
     editarMensaje(mensaje, 6);
     return false
   }
-  if (valorSeleccionado.length <= 0) {
+  if (valorSeleccionado.respValues.length <= 0) {
     editarMensaje(mensaje, 1);
     return false;
   } else {
@@ -53,7 +55,8 @@ export const capturarAbiertoMultiple = (elemento) => {
         let respueta = {
           tipoR: "multiple",
           preguntaNumero: cajaPregunta.id,
-          respuesta: valorSeleccionado,
+          respuesta: valorSeleccionado.respValues,
+          respText: valorSeleccionado.respText
         };
         return respueta;
       } else {

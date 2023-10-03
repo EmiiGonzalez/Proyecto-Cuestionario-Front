@@ -54,11 +54,7 @@ const validarValue = (value, idPregunta) => {
 
 const valAbiertoMultiple = (valorElegido, idPregunta) => {
   valorElegido.forEach((valor) => {
-    if (valor.respuestaAbierta) {
-      validarValue(valor.respuestaAbierta, idPregunta);
-    } else {
       validarValue(valor, idPregunta);
-    }
   });
   if (validarIdPregunta(idPregunta)) {
     return true;
@@ -106,7 +102,6 @@ const validarValuesPorTipo = {
 export const validarDato = (valorElegido, idPregunta, tipo) => {
   try {
     const esValido = validarValuesPorTipo[tipo](valorElegido, idPregunta);
-
     return esValido;
   } catch (error) {
     console.log("ERROR: " + error.message);

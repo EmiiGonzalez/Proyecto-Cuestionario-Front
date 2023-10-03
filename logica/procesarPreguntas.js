@@ -78,6 +78,7 @@ const capturarRespuesta = {
   unico: capturarUnico,
   escala: capturarEscala,
   final: capturarFinal,
+  "abierto": capturarAbierto,
   "abierto multiple": capturarAbiertoMultiple,
   edad: capturarEdad,
   sexo: capturarSexo,
