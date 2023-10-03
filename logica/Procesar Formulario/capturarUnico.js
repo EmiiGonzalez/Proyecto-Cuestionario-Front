@@ -30,7 +30,6 @@ export const capturarUnico = (elemento) => {
     return false;
   } else {
     let respueta = {
-      tipoR: "unica",
       preguntaNumero: cajaPregunta.id,
       respuesta: valorSeleccionado,
     };

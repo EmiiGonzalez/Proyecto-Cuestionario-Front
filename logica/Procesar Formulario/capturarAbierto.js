@@ -10,28 +10,29 @@ export const capturarAbierto = (elemento) => {
   const idPregunta = cajaPregunta.id;
   const tipo = "abierto";
 
-  let valorSeleccionado = null;
+  let valorSeleccionado = {
+    respValues: null,
+    respText: "",
+  };
   let control = true;
 
   radios.forEach((radio) => {
     if (radio.checked) {
       if (radio.dataset.input === "respuesta abierto") {
         const textoArea = textArea.value.trim();
-        valorSeleccionado = {
-          respuestaAbierta: radio.value,
-          texto: textoArea,
-        };
+        valorSeleccionado.respValues = radio.value;
+        valorSeleccionado.respText = textoArea;
         control = validarTextArea(textArea, mensaje);
       } else {
-        valorSeleccionado = radio.value;
+        valorSeleccionado.respValues = radio.value;
       }
       return;
     }
   });
 
-  const controlInput = validarDato(valorSeleccionado, idPregunta, tipo);
+  const controlInput = validarDato(valorSeleccionado.respValues, idPregunta, tipo);
 
-  if (valorSeleccionado === null) {
+  if (valorSeleccionado.respValues === null) {
     editarMensaje(mensaje, 1);
     return false;
   } else if (!controlInput) {
@@ -40,9 +41,9 @@ export const capturarAbierto = (elemento) => {
   } else {
     if (control) {
       const respuesta = {
-        tipoR: "unica",
         preguntaNumero: cajaPregunta.id,
-        respuesta: valorSeleccionado,
+        respuesta: valorSeleccionado.respValues,
+        respText: valorSeleccionado.respText,
       };
       return respuesta;
     } else {

@@ -24,7 +24,6 @@ export const capturarSexo = (cajaPregunta) => {
    }
    else {
     let respuesta = {
-        tipoR: "unica",
         preguntaNumero: idPregunta,
         respuesta: valorSeleccionado
     };

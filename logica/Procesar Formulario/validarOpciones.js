@@ -1,37 +1,14 @@
 import { valores, valoresPreguntas } from "../Cuestionario.js";
 
 const validarIdPregunta = (idPregunta) => {
-  return valoresPreguntas.includes(idPregunta);
+  if (valoresPreguntas.includes(idPregunta) === undefined) {
+    throw new Error("Se modifico el id de la pregunta");
+  } else {
+    return true;
+  }
+  
 };
 
-const validarArray = (arrayInputs, ArrayRespuestasCantidad) => {
-  let arrayAComparar = [];
-
-  for (let valor of arrayInputs) {
-    if (typeof valor === "object" && valor !== null) {
-      if (isNaN(Number(valor.respuestaAbierta))) {
-        return false;
-      }
-      arrayAComparar.push(Number(valor.respuestaAbierta));
-    }
-    if (typeof valor === "string" && valor !== null) {
-      if (isNaN(Number(valor))) {
-        return false;
-      }
-      arrayAComparar.push(Number(valor));
-    }
-  }
-
-  arrayAComparar.sort((a, b) => a - b);
-
-  for (let valor of arrayAComparar) {
-    if (!ArrayRespuestasCantidad.includes(valor)) {
-      throw new Error("Se modifico el valor de la respuesta");
-    }
-  }
-
-  return true;
-};
 
 const validarValue = (value, idPregunta) => {
   if (isNaN(Number(value))) {
@@ -63,12 +40,7 @@ const valAbiertoMultiple = (valorElegido, idPregunta) => {
 }
 
 const valAbierto = (valorElegido, idPregunta) => {
-  if (valorElegido.respuestaAbierta) {
-    validarValue(valorElegido.respuestaAbierta, idPregunta);
-  } else {
-    validarValue(valorElegido, idPregunta);
-  }
-  if (validarIdPregunta(idPregunta)) {
+  if (validarIdPregunta(idPregunta) && validarValue(valorElegido, idPregunta)) {
     return true;
   }
   throw new Error("Se modifico el id de la pregunta");

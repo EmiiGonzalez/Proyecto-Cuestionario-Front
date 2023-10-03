@@ -15,7 +15,7 @@ export const procesarFormulario = (formulario) => {
 
   const cantidadPreguntas = formulario.children.length;
   let contadorPreguntas = 0;
-  let resultados = [];
+  let objetRespuestas = {};
 
   btnsSiguiente.forEach((btn) => {
     btn.addEventListener("click", (e) => {
@@ -24,12 +24,14 @@ export const procesarFormulario = (formulario) => {
       const tipo = divPadre.getAttribute("data-preguntatipo");
 
       //valido y capturo la respuesta de la pregunta
-      const respueta = capturarRespuesta[tipo](divPadre);
+      const respuesta = capturarRespuesta[tipo](divPadre);
+
+      
 
       //si hay respuesta, muestro el siguiente elemento
-      if (respueta) {
+      if (respuesta) {
         btn.disabled = true;
-        resultados.push(respueta);
+        objetRespuestas[divPadre.id] = respuesta;
         let elementoActual = formulario.firstElementChild;
         let elementoSiguiente = formulario.children[1];
 
@@ -50,9 +52,8 @@ export const procesarFormulario = (formulario) => {
           elementoActual.remove();
         } , 500);
         contadorPreguntas++;
-        
       }
-      console.log(resultados);
+      console.log(objetRespuestas);
     });
   });
 
@@ -65,9 +66,7 @@ export const procesarFormulario = (formulario) => {
     
     console.log(resultados);
     if (respueta && cantidadPreguntas === contadorPreguntas) {
-      resultados.push(respueta);
-      controladorDePeticiones(resultados, formulario);
-      
+      controladorDePeticiones(objetRespuestas, formulario);
     }
   });
   

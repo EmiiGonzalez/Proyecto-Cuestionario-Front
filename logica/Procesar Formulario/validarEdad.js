@@ -3,9 +3,9 @@ export const validarEdad = (elemento) => {
     const mensaje = elemento.querySelector('.mensaje');
 
     input.addEventListener('keyup', (e) => {
-        if (input.value < 1 || input.value > 99) {
+        if (input.value < 14 || input.value > 99) {
             mensaje.classList.remove('disabled');
-            mensaje.innerText = "Debe ingresar un número entre 1 y 99";
+            mensaje.innerText = "Debe ingresar un número entre 14 y 99";
             input.dataset.valid = false;
             setTimeout(() => {
                 mensaje.classList.add('disabled');

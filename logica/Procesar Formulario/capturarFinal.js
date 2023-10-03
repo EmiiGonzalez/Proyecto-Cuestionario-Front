@@ -29,7 +29,6 @@ export const capturarFinal = (elemento) => {
 
   if (control && controlInput) {
     let respueta = {
-      tipoR: "final",
       preguntaNumero: idPregunta,
       respuesta: valorSeleccionado,
     };
