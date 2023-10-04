@@ -9,7 +9,6 @@ const validarIdPregunta = (idPregunta) => {
   
 };
 
-
 const validarValue = (value, idPregunta) => {
   if (isNaN(Number(value))) {
     throw new Error(

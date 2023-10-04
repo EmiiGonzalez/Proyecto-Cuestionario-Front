@@ -30,7 +30,7 @@ export const procesarFormulario = (formulario) => {
       if (respuesta) {
         btn.disabled = true;
         objetRespuestas[divPadre.id] = respuesta.respuesta;
-        if(respuesta.respText){
+        if(respuesta.hasOwnProperty("respText")){
           objetRespuestas[divPadre.id + "_o"] = respuesta.respText;
         }
         let elementoActual = formulario.firstElementChild;
