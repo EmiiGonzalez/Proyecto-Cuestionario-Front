@@ -20,6 +20,6 @@ const mensajes = {
   2: "El valor que se intenta enviar es invalido",
   3: "Debe ingresar al menos 4 caracteres",
   4: "Por favor ingrese un numero entre 1 y 99",
-  5: "Limite de caracteres exedido, maximo 150 caracteres",
+  5: "Limite de caracteres exedido, maximo 180 caracteres",
   6: "Solo se pueden seleccionar hasta 3 respuestas",
 };

@@ -15,6 +15,7 @@ export const procesarFormulario = (formulario) => {
 
   const cantidadPreguntas = formulario.children.length;
   let contadorPreguntas = 0;
+  let contadorOtros = 0;
   let objetRespuestas = {};
 
   btnsSiguiente.forEach((btn) => {
@@ -32,6 +33,7 @@ export const procesarFormulario = (formulario) => {
         objetRespuestas[divPadre.id] = respuesta.respuesta;
         if(respuesta.hasOwnProperty("respText")){
           objetRespuestas[divPadre.id + "_o"] = respuesta.respText;
+          contadorOtros++;
         }
         let elementoActual = formulario.firstElementChild;
         let elementoSiguiente = formulario.children[1];
@@ -64,15 +66,14 @@ export const procesarFormulario = (formulario) => {
     );
     const tipo = elementoFinal.getAttribute("data-preguntatipo");
     const respueta = capturarRespuesta[tipo](elementoFinal);
+    let cantOtrosFinal = Object.keys(objetRespuestas).length - contadorOtros +1;
     contadorPreguntas++;
-
     if (
       respueta &&
       cantidadPreguntas === contadorPreguntas &&
-      cantidadPreguntas === Object.keys(objetRespuestas).length
+      (cantidadPreguntas) === (cantOtrosFinal)
     ) {
-      objetRespuestas[respueta.id] = respueta.respuesta;
-      objetRespuestas[respueta.id + "_o"] = respueta.respText;
+      objetRespuestas["final_o"] = respueta;
       controladorDePeticiones(objetRespuestas, formulario);
     }
   });

@@ -8,13 +8,13 @@ export const capturarFinal = (elemento) => {
   const idPregunta = elemento.id;
   const tipo = "final";
 
-  let valorSeleccionado = null;
+  let valorSeleccionado = "";
   let control = false;
 
   const controlInput = validarDato(valorSeleccionado, idPregunta, tipo);
 
   let cantidadCaracteres = textArea.value.trim().length;
-  if (cantidadCaracteres > 150) {
+  if (cantidadCaracteres > 180) {
     editarMensaje(mensaje, 5);
     control = false;
   }
@@ -28,10 +28,6 @@ export const capturarFinal = (elemento) => {
   }
 
   if (control && controlInput) {
-    let respueta = {
-      preguntaNumero: idPregunta,
-      respuesta: valorSeleccionado,
-    };
-    return respueta;
+    return valorSeleccionado;
   }
 };
