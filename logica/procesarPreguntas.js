@@ -11,7 +11,7 @@ import { controladorDePeticiones } from "./controlador.js";
 export const procesarFormulario = (formulario) => {
   const btnsSiguiente = formulario.querySelectorAll(".btnSiguiente");
   const primerElemento = formulario.children[0];
-  primerElemento.classList.remove('disabled');
+  primerElemento.classList.remove("disabled");
 
   const cantidadPreguntas = formulario.children.length;
   let contadorPreguntas = 0;
@@ -26,12 +26,13 @@ export const procesarFormulario = (formulario) => {
       //valido y capturo la respuesta de la pregunta
       const respuesta = capturarRespuesta[tipo](divPadre);
 
-      
-
       //si hay respuesta, muestro el siguiente elemento
       if (respuesta) {
         btn.disabled = true;
-        objetRespuestas[divPadre.id] = respuesta;
+        objetRespuestas[divPadre.id] = respuesta.respuesta;
+        if(respuesta.respText){
+          objetRespuestas[divPadre.id + "_o"] = respuesta.respText;
+        }
         let elementoActual = formulario.firstElementChild;
         let elementoSiguiente = formulario.children[1];
 
@@ -39,18 +40,17 @@ export const procesarFormulario = (formulario) => {
           elementoActual.classList.add("fade-in");
         }, 500);
 
-        elementoActual.classList.remove('fade-out');
-        elementoSiguiente.classList.remove('fade-in');
+        elementoActual.classList.remove("fade-out");
+        elementoSiguiente.classList.remove("fade-in");
 
-        
         setTimeout(() => {
           elementoActual.classList.add("disabled");
           elementoSiguiente.classList.remove("disabled");
 
-          elementoActual.classList.add('fade-out');
-          elementoSiguiente.classList.add('fade-in');
+          elementoActual.classList.add("fade-out");
+          elementoSiguiente.classList.add("fade-in");
           elementoActual.remove();
-        } , 500);
+        }, 500);
         contadorPreguntas++;
       }
       console.log(objetRespuestas);
@@ -59,25 +59,30 @@ export const procesarFormulario = (formulario) => {
 
   formulario.addEventListener("submit", (e) => {
     e.preventDefault();
-    const elementoFinal = document.querySelector('div[data-preguntatipo="final"]');
+    const elementoFinal = document.querySelector(
+      'div[data-preguntatipo="final"]'
+    );
     const tipo = elementoFinal.getAttribute("data-preguntatipo");
     const respueta = capturarRespuesta[tipo](elementoFinal);
     contadorPreguntas++;
-    
-    console.log(resultados);
-    if (respueta && cantidadPreguntas === contadorPreguntas) {
+
+    if (
+      respueta &&
+      cantidadPreguntas === contadorPreguntas &&
+      cantidadPreguntas === Object.keys(objetRespuestas).length
+    ) {
+      objetRespuestas[respueta.id] = respueta.respuesta;
+      objetRespuestas[respueta.id + "_o"] = respueta.respText;
       controladorDePeticiones(objetRespuestas, formulario);
     }
   });
-  
 };
-
 
 const capturarRespuesta = {
   unico: capturarUnico,
   escala: capturarEscala,
   final: capturarFinal,
-  "abierto": capturarAbierto,
+  abierto: capturarAbierto,
   "abierto multiple": capturarAbiertoMultiple,
   edad: capturarEdad,
   sexo: capturarSexo,
