@@ -56,7 +56,7 @@ export const cuestionario = {
     },
     p6:{
         texto: '¿Como acostumbra ud. a guardar sus contraseñas para recordarlas?',
-        tipo: 'abierto multiple',
+        tipo: 'abierto',
         opciones: [{
             texto: {
             1: 'En forma Digital (incluye gestores, archivos, mensajes en redes sociales)',
@@ -114,6 +114,7 @@ export const cuestionario = {
         texto: '¿Cuales es la red social que mas utiliza?',
         tipo: 'ranking',
         rank: 2,
+        texto2:'Seleccione la primer red social a la izquierda y la segunda red social a la derecha',
         opciones: [{
             texto: {
             1: 'Facebook',
@@ -203,3 +204,8 @@ export const valores = {
   };
 
 export const valoresPreguntas = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "sexo", "edad"];
+
+export const cantRespuestasAceptadas = {
+    p7: 3,
+    p12: 5,
+}

@@ -1,13 +1,12 @@
-export const validarMultiple = (array) => {
+import { cantRespuestasAceptadas } from "../Cuestionario.js";
+ 
+export const validarMultiple = (array, id) => {
 
     const longitud = array.length;
     let control = true;
+    const maxRespuestas = cantRespuestasAceptadas[id];
 
-    longitud > 3 ? control = false : control = true;
+    longitud > maxRespuestas ? control = false : control = true;
 
     return control;
-}
-
-export const mensajeMultilple = (mensaje) => {
-    
 }

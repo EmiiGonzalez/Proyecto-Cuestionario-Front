@@ -400,7 +400,7 @@ const generarSexo = ({ texto, opciones }) => {
   return div;
 };
 
-const generarRanking = ({ texto, tipo, opciones, rank }) => {
+const generarRanking = ({ texto, tipo, opciones, texto2 }) => {
   
   const div = document.createElement("div");
   const text = document.createElement("p");
@@ -434,7 +434,7 @@ const generarRanking = ({ texto, tipo, opciones, rank }) => {
   textArea.classList.add("textoArea");
 
   mensaje2.classList.add("mensaje2");
-  mensaje2.innerText = "Seleccione la primer red social a la derecha y la segunda red social a la izquierda";
+  mensaje2.innerText = texto2;
 
   div.appendChild(text);
   div.appendChild(mensaje2);
