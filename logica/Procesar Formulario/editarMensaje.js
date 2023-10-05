@@ -22,4 +22,6 @@ const mensajes = {
   4: "Por favor ingrese un numero entre 1 y 99",
   5: "Limite de caracteres exedido, maximo 180 caracteres",
   6: "Solo se pueden seleccionar hasta 3 respuestas",
+  7: "Debe seleccionar mas de una opcion",
+  8: "No se admiten respuestas repetidas",
 };

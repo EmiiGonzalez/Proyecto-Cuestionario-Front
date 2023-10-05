@@ -2,7 +2,7 @@ export const validarEdad = (elemento) => {
     const input = elemento.querySelector('.inputEdad');
     const mensaje = elemento.querySelector('.mensaje');
 
-    input.addEventListener('keyup', (e) => {
+    input.addEventListener('keyup', () => {
         if (input.value < 14 || input.value > 99) {
             mensaje.classList.remove('disabled');
             mensaje.innerText = "Debe ingresar un número entre 14 y 99";

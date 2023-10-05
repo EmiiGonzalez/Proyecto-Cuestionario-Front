@@ -26,7 +26,6 @@ export const capturarAbierto = (elemento) => {
       } else {
         valorSeleccionado.respValues = radio.value;
       }
-      return;
     }
   });
 

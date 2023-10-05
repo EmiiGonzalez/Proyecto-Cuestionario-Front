@@ -6,7 +6,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   const div2 = document.createElement("div");
   const btnSiguiente = document.createElement("button");
   const mensaje = document.createElement("p");
-  
+
   text.classList.add("textoPregunta");
 
   btnSiguiente.innerText = "Siguiente";
@@ -18,7 +18,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div2.classList.add("cajaOpciones");
 
   mensaje.classList.add("mensaje", "disabled");
-  
+
   text.innerText = texto;
 
   div.appendChild(text);
@@ -44,7 +44,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   return div;
 };
 
- const generarEscala = ({ texto, tipo, opciones }) => {
+const generarEscala = ({ texto, tipo, opciones }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const btnSiguiente = document.createElement("button");
@@ -61,12 +61,11 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
 
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaEscala");
-  
+
   text.innerText = texto;
   div.appendChild(text);
   div.appendChild(div2);
   for (const opcion in opciones) {
-    
     const label = document.createElement("label");
 
     label.innerText = opciones[opcion];
@@ -82,7 +81,6 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
     label.appendChild(radio);
 
     div2.appendChild(label);
-    
   }
 
   div.appendChild(btnSiguiente);
@@ -90,7 +88,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   return div;
 };
 
- const generarAbierto = ({ texto, tipo, opciones }) => {
+const generarAbierto = ({ texto, tipo, opciones }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
@@ -103,7 +101,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
-  
+
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
 
@@ -118,7 +116,6 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   text.innerText = texto;
 
   for (const opcion in opciones) {
-
     if (opciones[opcion].texto) {
       for (const pregunta in opciones[opcion].texto) {
         const label = document.createElement("label");
@@ -163,7 +160,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   return div;
 };
 
- /*const generarMultiple = ({ texto, opciones  }) => {
+/*const generarMultiple = ({ texto, opciones  }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
@@ -225,7 +222,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   return div;
 }*/
 
- const generarAbiertoMultiple = ({ texto, opciones, tipo }) => {
+const generarAbiertoMultiple = ({ texto, opciones, tipo }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const div2 = document.createElement("div");
@@ -240,7 +237,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   btnSiguiente.type = "button";
 
   mensaje.classList.add("mensaje");
-  
+
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
 
@@ -249,7 +246,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(text);
   div.appendChild(div2);
   div.appendChild(textArea);
-  
+
   text.innerText = texto;
   for (const opcion in opciones) {
     if (opciones[opcion].texto) {
@@ -267,7 +264,6 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
 
         label.appendChild(checkbox);
         div2.appendChild(label);
-
       }
     }
     if (opciones[opcion].otraForma) {
@@ -288,16 +284,16 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
 
         label.appendChild(checkbox);
         div2.appendChild(label);
-      })
+      });
     }
   }
 
   div.appendChild(btnSiguiente);
   div.appendChild(mensaje);
   return div;
-}
+};
 
- const generarFinal = ({texto}) => {
+const generarFinal = ({ texto }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const textArea = document.createElement("textarea");
@@ -305,7 +301,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   const mensaje = document.createElement("p");
 
   mensaje.classList.add("mensaje");
-  
+
   text.classList.add("textoPregunta");
 
   submit.type = "submit";
@@ -323,11 +319,10 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(submit);
   div.appendChild(mensaje);
 
-
   return div;
-}
+};
 
- const generarEdad = ({texto}) => {
+const generarEdad = ({ texto }) => {
   const div = document.createElement("div");
   const text = document.createElement("p");
   const input = document.createElement("input");
@@ -339,7 +334,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   btnSiguiente.innerText = "Siguiente";
   btnSiguiente.classList.add("btnSiguiente");
   btnSiguiente.type = "button";
-  
+
   input.type = "number";
   input.classList.add("inputEdad");
   input.placeholder = "Inserte su edad";
@@ -347,7 +342,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   input.setAttribute("data-valid", "false");
 
   div.classList.add("cajaPregunta");
-  
+
   mensaje.classList.add("mensaje");
 
   text.innerText = texto;
@@ -359,9 +354,9 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(mensaje);
   validarEdad(div);
   return div;
- }
+};
 
- const generarSexo = ({texto, opciones}) => {
+const generarSexo = ({ texto, opciones }) => {
   const div = document.createElement("div");
   const div2 = document.createElement("div");
   const text = document.createElement("p");
@@ -380,7 +375,7 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(div2);
 
   mensaje.classList.add("mensaje");
-  
+
   div.classList.add("cajaPregunta");
   div2.classList.add("cajaOpciones");
 
@@ -403,14 +398,132 @@ const generarUnicaOpcion = ({ texto, tipo, opciones }) => {
   div.appendChild(mensaje);
 
   return div;
- }
+};
+
+const generarRanking = ({ texto, tipo, opciones, rank }) => {
+  
+  const div = document.createElement("div");
+  const text = document.createElement("p");
+  const div2 = document.createElement("div");
+  const btnSiguiente = document.createElement("button");
+  const mensaje = document.createElement("p");
+  const mensaje2 = document.createElement("p");
+  const textArea = document.createElement("textarea");
+  const divRadio1 = document.createElement("div");
+  const divRadio2 = document.createElement("div");
+  const divLabel = document.createElement("div");
+
+  text.classList.add("textoPregunta");
+
+  btnSiguiente.innerText = "Siguiente";
+  btnSiguiente.classList.add("btnSiguiente");
+  btnSiguiente.type = "button";
+
+  div.classList.add("cajaPregunta");
+  div2.classList.add("cajaOpciones");
+  div2.classList.add("cajaOpciones2");
+
+  divLabel.classList.add("cajaLabel");
+  divRadio1.classList.add("cajaRadios", "box1");
+
+  divRadio2.classList.add("cajaRadios", "box2");
+
+
+  mensaje.classList.add("mensaje");
+
+  textArea.classList.add("textoArea");
+
+  mensaje2.classList.add("mensaje2");
+  mensaje2.innerText = "Seleccione la primer red social a la derecha y la segunda red social a la izquierda";
+
+  div.appendChild(text);
+  div.appendChild(mensaje2);
+  div.appendChild(div2);
+  div.appendChild(textArea);        
+ 
+  
+
+  text.innerText = texto;
+
+  for (const opcion in opciones) {
+    if (opciones[opcion].texto) {
+      for (const pregunta in opciones[opcion].texto) {
+        
+        const label = document.createElement("label");
+        const radio = document.createElement("input");
+        const radio2 = document.createElement("input");
+
+        label.innerText = opciones[opcion].texto[pregunta];
+        label.classList.add("textoOpcion");
+        label.setAttribute("for", `${pregunta}`);
+
+        radio2.type = "radio";
+        radio2.name = `${tipo}2`;
+        radio2.value = Number(pregunta);
+        radio2.classList.add("opcionRadio");
+        radio2.id = `${pregunta}`;
+
+        radio.type = "radio";
+        radio.name = `${tipo}`;
+        radio.value = Number(pregunta);
+        radio.classList.add("opcionRadio");
+        radio.id = `${pregunta}`;
+
+        divRadio1.appendChild(radio);
+        divRadio2.appendChild(radio2);
+        divLabel.appendChild(label);
+
+        div2.appendChild(divLabel);
+        div2.appendChild(divRadio1);
+        div2.appendChild(divRadio2);
+        
+
+      }
+    }
+    if (opciones[opcion].otraForma) {
+      const clave = Object.keys(opciones[opcion].otraForma);
+
+      clave.forEach((clave) => {
+        const label = document.createElement("label");
+        const radio = document.createElement("input");
+        const radio2 = document.createElement("input");
+        label.innerText = opciones[opcion].otraForma[clave];
+        label.classList.add("textoOpcion");
+
+        radio2.type = "radio";
+        radio2.name = `${tipo}2`;
+        radio2.value = Number(clave);
+        radio2.classList.add("otra");
+        radio2.classList.add("opcionRadio");
+        radio2.setAttribute("data-input", "respuesta " + tipo);
+
+        radio.type = "radio";
+        radio.name = `${tipo}`;
+        radio.value = Number(clave);
+        radio.classList.add("otra");
+        radio.classList.add("opcionRadio");
+        radio.setAttribute("data-input", "respuesta " + tipo);
+
+        divRadio1.appendChild(radio);
+        divRadio2.appendChild(radio2);
+        divLabel.appendChild(label);
+      });
+    }
+  }
+
+  div.appendChild(btnSiguiente);
+  div.appendChild(mensaje);
+  return div;
+  
+};
 
 export const tiposFormulario = {
-  unico: generarUnicaOpcion ,
+  unico: generarUnicaOpcion,
   escala: generarEscala,
   abierto: generarAbierto,
   final: generarFinal,
   "abierto multiple": generarAbiertoMultiple,
   edad: generarEdad,
-  sexo: generarSexo
-}
+  sexo: generarSexo,
+  ranking: generarRanking,
+};

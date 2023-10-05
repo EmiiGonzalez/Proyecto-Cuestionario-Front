@@ -7,6 +7,7 @@ import { capturarSexo } from "./Procesar Formulario/capturarSexo.js";
 import { capturarUnico } from "./Procesar Formulario/capturarUnico.js";
 import { capturarEdad } from "./Procesar Formulario/capturarEdad.js";
 import { controladorDePeticiones } from "./controlador.js";
+import { capturarRanking } from "./Procesar Formulario/capturarRanking.js";
 
 export const procesarFormulario = (formulario) => {
   const btnsSiguiente = formulario.querySelectorAll(".btnSiguiente");
@@ -87,4 +88,5 @@ const capturarRespuesta = {
   "abierto multiple": capturarAbiertoMultiple,
   edad: capturarEdad,
   sexo: capturarSexo,
+  ranking: capturarRanking
 };

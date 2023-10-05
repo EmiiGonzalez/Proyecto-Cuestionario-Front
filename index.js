@@ -37,6 +37,7 @@ const iniciarCuestionario = (formulario) => {
     formulario.appendChild(divGenerar);
   
     divGenerar.classList.add("disabled", "transicion-difuminado");
+    
   }
   
   procesarFormulario(formulario);

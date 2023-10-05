@@ -1,9 +1,9 @@
 export const cuestionario = {
-    pEdad: {
+    edad: {
         texto: '¿Cuál es su edad?',
         tipo: 'edad',
     },
-    pSexo: {
+    sexo: {
         texto: '¿Cuál es su sexo?',
         tipo: 'sexo',
         opciones: {
@@ -112,7 +112,8 @@ export const cuestionario = {
     },
     p11:{
         texto: '¿Cuales es la red social que mas utiliza?',
-        tipo: 'abierto',
+        tipo: 'ranking',
+        rank: 2,
         opciones: [{
             texto: {
             1: 'Facebook',
@@ -124,19 +125,6 @@ export const cuestionario = {
         }]
     },
     p12:{
-        texto: '¿Cuales es la segunda red social que mas utiliza?',
-        tipo: 'abierto',
-        opciones: [{
-            texto: {
-            1: 'Facebook',
-            2: 'Instagram',
-            3: 'Twitter',
-            4: 'Tik Tok',
-            },
-            otraForma: {5: 'Otra(Especificar): '}
-        }]
-    },
-    p13:{
         texto: 'De la siguiente lista de Dispositivos electrónicos me podría decir ud. ¿cual o cuales tiene?',
         tipo: 'abierto multiple',
         opciones: [{
@@ -149,7 +137,7 @@ export const cuestionario = {
             otraForma: {5: 'Otra(Especificar): '}
         }]
     },
-    p14:{
+    p13:{
         texto: 'Cuando ud. instala Programas o aplicaciones ¿lee los términos y condiciones, No los lee o no sabia que existen los términos y condiciones?',
         tipo: 'unico',
         opciones: {
@@ -158,7 +146,7 @@ export const cuestionario = {
             3: 'No sabe de la existencia de Terminos y Condiciones'
         }
     },
-    p15:{
+    p14:{
         texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. ¿Que busca?',
         tipo: 'abierto',
         opciones: [{
@@ -170,7 +158,7 @@ export const cuestionario = {
             otraForma: {4: 'Otra(Especificar): '}
         }]
     },
-    p16:{
+    p15:{
         texto: 'Cuando ud. instala programas nuevos a su dispositivo electrónico. ¿Que busca?',
         tipo: 'unico',
         opciones: {
@@ -179,7 +167,7 @@ export const cuestionario = {
             3: 'No utiliza software antivirus'
         }
     },
-    p17:{
+    p16:{
         texto: '¿Utiliza servicios donde ingrese datos bancarios como billeteras virtuales o sitios de Compra?',
         tipo: 'unico',
         opciones: {
@@ -187,14 +175,14 @@ export const cuestionario = {
             2: 'No utiliza',
         }
     },
-    p18:{
-        texto: 'Para finalizar, me podría comentar ud. ¿cuales son las cosas debe cambiar para ser un usuario ciber seguro o aprovechar al máximo posible la Ciber Seguridad? Algo más? Algo más?(Profundizar)',
+    p17:{
+        texto: 'Para finalizar, me podría comentar ud. ¿cuales son las cosas debe cambiar para ser un usuario ciber seguro o aprovechar al máximo posible la Ciber Seguridad?',
         tipo: 'final'
     }
 }
 
 export const valores = {
-    pSexo: [1, 2],
+    sexo: [1, 2],
     p1: [1, 2],
     p2: [1, 2, 3],
     p3: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
@@ -214,4 +202,4 @@ export const valores = {
     p17: [1, 2],
   };
 
-export const valoresPreguntas = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "pSexo", "pEdad"];
+export const valoresPreguntas = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13", "p14", "p15", "p16", "p17", "p18", "sexo", "edad"];

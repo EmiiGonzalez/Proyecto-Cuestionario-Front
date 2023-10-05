@@ -81,9 +81,10 @@
 .cajaOpciones {
   width: 100%;
   display: flex;
-  justify-content: flex-start; /* Cambia a flex-start */
+  justify-content: space-around; /* Cambia a flex-start */
   align-items: center;
   flex-direction: column;
+  
 }
 
 .textoOpcion {
@@ -214,4 +215,43 @@
   60% { transform: translateX(-10px); }
   80% { transform: translateX(10px); }
   100% { transform: translateX(0); }
+}
+.cajaOpciones2{
+  display: flex;
+  flex-direction: row;
+}
+
+.cajaLabel{
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cajaLabel label{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 50%;
+  letter-spacing: 1px;
+  font-family: "Roboto", sans-serif;
+}
+.cajaLabel label input[type="radio"]{
+
+  cursor: pointer;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+
+}
+.cajaRadios{
+  width: 25%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
