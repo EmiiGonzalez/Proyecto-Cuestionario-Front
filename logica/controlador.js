@@ -2,7 +2,7 @@ import { mensajeFinal } from "./mensajeFinal.js";
 export const controladorDePeticiones = (resultados, formularioDiv) => {
     
     const datosAEnviar = JSON.stringify(resultados);
-    const url = "http://localhost:3000/rFormWeb";
+    const url = "http://localhost:3000/rFormWeb/create";
     formularioDiv.children[0].remove();
 
     fetch(url, {
@@ -14,8 +14,7 @@ export const controladorDePeticiones = (resultados, formularioDiv) => {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data);
-        const idFormulario = data.idcuestn;
+        const idFormulario = data.cuestn;
         formularioDiv.appendChild(mensajeFinal(idFormulario, true));
     })
     .catch(error => {

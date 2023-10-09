@@ -56,7 +56,6 @@ export const procesarFormulario = (formulario) => {
         }, 500);
         contadorPreguntas++;
       }
-      console.log(objetRespuestas);
     });
   });
 
@@ -74,7 +73,7 @@ export const procesarFormulario = (formulario) => {
       cantidadPreguntas === contadorPreguntas &&
       (cantidadPreguntas) === (cantOtrosFinal)
     ) {
-      objetRespuestas["final_o"] = respueta;
+      objetRespuestas[elementoFinal.id + "_o"] = respueta;
       controladorDePeticiones(objetRespuestas, formulario);
     }
   });
